@@ -414,7 +414,7 @@ class MPPI():
         #if self.multi_modal:
             #act_seq[0, :, :] = self.best_traj_1
             #act_seq[self.half_K, :, :] = self.best_traj_2
-        if self.env_type == "panda_env"or self.env_type == "panda_env_LiftedObstaclesShelf":
+        if self.env_type == "panda_env"or self.env_type == "panda_env_LiftedObstaclesShelf"or self.env_type=="panda_env_dyn2":
             if self.gripper_command == "open":
                 self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
             elif self.gripper_command == "close":
