@@ -56,7 +56,10 @@ def run_sim(cfg: ExampleConfig):
         else:
             sim.reset()
 
+
         planner.reset_planner()
+        sim.set_dof_state_tensor(sim._dof_state)
+        sim.set_actor_root_state_tensor(sim._root_state)
         # 重置模拟环境（假设 IsaacGymWrapper 提供了 reset 方法）
         # if torch.isnan(sim._root_state).any() or torch.isnan(sim._dof_state).any():
         # print("检测到仿真状态异常，立即重置仿真状态")
@@ -68,9 +71,7 @@ def run_sim(cfg: ExampleConfig):
         # sim._dof_state.zero_()
         # sim._root_state.zero_()
         # 并重新设置初始状态到 Isaac Gym 中（具体代码根据你的 wrapper 实现）
-        sim.reset()
 
-        planner.reset_planner()
         print("******************************************")
 
         ep_start_time = time.time()
@@ -78,7 +79,7 @@ def run_sim(cfg: ExampleConfig):
         step_counter = 0
         last_timestamp = time.time()
         stream = torch.cuda.Stream()
-        while time.time() - ep_start_time < 240:
+        while time.time() - ep_start_time < 180:
             current_time = time.time()
             dt = current_time - last_timestamp
             if dt > 0:
@@ -124,8 +125,7 @@ def run_sim(cfg: ExampleConfig):
             # 假设 "dyn-obs" 对应的 actor 在 sim.env_cfg 中保存了 handle
 
             dyn_obs_force = sim.get_actor_contact_forces_by_name("dyn-obs",
-                                                                 "box") + sim.get_actor_contact_forces_by_name(
-                "dyn-obs_", "sphere")
+                                                                 "panda") #+ sim.get_actor_contact_forces_by_name( "dyn-obs_", "panda")
             force_norm = torch.linalg.norm(dyn_obs_force, dim=1)
             # static_obs_force = sim.get_actor_contact_forces_by_name("cubeC", "box")
             # static_force_norm = torch.linalg.norm(static_obs_force, dim=1)
@@ -146,6 +146,7 @@ def run_sim(cfg: ExampleConfig):
         ep_duration = time.time() - ep_start_time
         if episode_success:
             success_count += 1
+
         else:
             failure_count += 1
             # failure_reason = f"本回合超时"

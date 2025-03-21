@@ -108,13 +108,21 @@ class PLANNER_AIF_PANDA(PLANNER_SIMPLE):
         self.curr_goal = self.initial_goal.clone()
         self.pick_always = False
         self.place_always = False
+        for agent in self.ai_agent_task:
+            if hasattr(agent, "reset_habits"):
+                agent.reset_habits()
+            if hasattr(agent, "reset_current_state"):
+                agent.reset_current_state()
         print("PLANNER_AIF_PANDA 内部状态已重置")
+        print("PLANNER_AIF_PANDA 内部状态已重置")
+
     def check_task_success(self, sim):
         cube_state = sim.get_actor_link_by_name("cubeA", "box")[0, :7]
         cube_goal = sim.get_actor_link_by_name("cubeB", "box")[0, :7]
         dist_cost = torch.linalg.norm(self.curr_goal[:2] - cube_state[:2])
         flag = False
-        if self.task == 'place' and dist_cost < 0.04:
+        #if self.task == 'place' and dist_cost < 0.04:
+        if dist_cost < 0.04:
             flag = True
         return flag
 

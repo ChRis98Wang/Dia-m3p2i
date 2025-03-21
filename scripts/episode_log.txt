@@ -2573,3 +2573,310 @@ Episode 30: Failure. Reason:
 Episode 31: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 206.52秒
 Episode 32: Failure. Reason: 
 Episode 33: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 256.98秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 182.26秒
+Episode 3: Failure. Reason: 
+Episode 4: Failure. Reason: 
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 180.59秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 201.73秒
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 207.22秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 224.15秒
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 272.79秒
+Episode 10: Failure. Reason: 
+Episode 11: Failure. Reason: 
+Episode 12: Failure. Reason: Episode 开始时检测到 NaN
+Episode 13: Failure. Reason: 
+Episode 14: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 195.72秒
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 212.45秒
+Episode 16: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 255.15秒
+Episode 17: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 205.01秒
+========== Simulation Log shelf inside N=3 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.371], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 168.58秒
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.707], device='cuda:0')
+Episode 3: Failure. Reason: 
+Episode 4: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.108], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.03秒
+Episode 2: Failure. Reason: 
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.809], device='cuda:0')
+Episode 4: Failure. Reason: 
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 107.53秒
+Episode 6: Failure. Reason: 
+Episode 7: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.993], device='cuda:0')
+Episode 8: Failure. Reason: 
+Episode 9: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.903], device='cuda:0')
+Episode 10: Failure. Reason: 
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.84秒
+Episode 12: Failure. Reason: 
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 104.89秒
+Episode 14: Failure. Reason: 
+Episode 15: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([14.283], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.990], device='cuda:0')
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.760], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.761], device='cuda:0')
+Episode 2: Failure. Reason: 
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 55.30秒
+Episode 4: Failure. Reason: 
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.03秒
+Episode 6: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.760], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 73.20秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 63.48秒
+Episode 2: Failure. Reason: 
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 54.17秒
+Episode 4: Failure. Reason: 
+Episode 5: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.616], device='cuda:0')
+Episode 6: Failure. Reason: 
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 61.64秒
+Episode 8: Failure. Reason: 
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 57.36秒
+Episode 10: Failure. Reason: 
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 57.90秒
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.358], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.06秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 112.18秒
+Episode 2: Failure. Reason: 
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.340], device='cuda:0')
+Episode 4: Failure. Reason: 
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.12秒
+Episode 6: Failure. Reason: 
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.52秒
+Episode 8: Failure. Reason: 
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.90秒
+Episode 10: Failure. Reason: 
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 105.66秒
+Episode 12: Failure. Reason: 
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.87秒
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.041], device='cuda:0')
+Episode 2: Failure. Reason: 
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.01秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.65秒
+Episode 2: Failure. Reason: 
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 157.80秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 105.15秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.71秒
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.267], device='cuda:0')
+Episode 2: Failure. Reason: 
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 163.61秒
+Episode 4: Failure. Reason: 
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 142.90秒
+Episode 6: Failure. Reason: 
+Episode 7: Failure. Reason: Episode 开始时检测到 NaN
+Episode 8: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.855], device='cuda:0')
+Episode 9: Failure. Reason: 
+Episode 10: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 129.51秒
+Episode 11: Failure. Reason: 
+Episode 12: Failure. Reason: Episode 开始时检测到 NaN
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.61秒
+Episode 14: Failure. Reason: 
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 132.57秒
+Episode 16: Failure. Reason: 
+Episode 17: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 150.00秒
+Episode 18: Failure. Reason: 
+Episode 19: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 166.06秒
+Episode 20: Failure. Reason: 
+Episode 21: Failure. Reason: Episode 开始时检测到 NaN
+Episode 22: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.89秒
+Episode 23: Failure. Reason: 
+Episode 24: Failure. Reason: Episode 开始时检测到 NaN
+Episode 25: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.949], device='cuda:0')
+Episode 26: Failure. Reason: 
+Episode 27: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([10.670], device='cuda:0')
+Episode 28: Failure. Reason: 
+Episode 29: Failure. Reason: Episode 开始时检测到 NaN
+Episode 30: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.21秒
+Episode 31: Failure. Reason: 
+Episode 32: Failure. Reason: Episode 开始时检测到 NaN
+Episode 33: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.42秒
+Episode 34: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.403], device='cuda:0')
+Episode 2: Failure. Reason: 
+Episode 3: Failure. Reason: Episode 开始时检测到 NaN
+Episode 4: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.826], device='cuda:0')
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.86秒
+Episode 6: Failure. Reason: 
+Episode 7: Failure. Reason: Episode 开始时检测到 NaN
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.15秒
+Episode 9: Failure. Reason: 
+Episode 10: Failure. Reason: Episode 开始时检测到 NaN
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.50秒
+Episode 12: Failure. Reason: 
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 164.81秒
+Episode 14: Failure. Reason: 
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 162.17秒
+Episode 16: Failure. Reason: 
+Episode 17: Failure. Reason: Episode 开始时检测到 NaN
+Episode 18: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 116.87秒
+Episode 19: Failure. Reason: 
+Episode 20: Failure. Reason: Episode 开始时检测到 NaN
+Episode 21: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.642], device='cuda:0')
+Episode 22: Failure. Reason: 
+Episode 23: Failure. Reason: Episode 开始时检测到 NaN
+Episode 24: Failure. Reason: 
+Episode 25: Failure. Reason: Episode 开始时检测到 NaN
+Episode 26: Failure. Reason: 
+Episode 27: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 176.66秒
+Episode 28: Failure. Reason: 
+Episode 29: Failure. Reason: Episode 开始时检测到 NaN
+Episode 30: Failure. Reason: 
+Episode 31: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 173.65秒
+Episode 32: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.89秒
+Episode 33: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.621], device='cuda:0')
+Episode 34: Failure. Reason: 
+Episode 35: Failure. Reason: Episode 开始时检测到 NaN
+Episode 36: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.41秒
+Episode 37: Failure. Reason: 
+Episode 38: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 177.78秒
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.821], device='cuda:0')
+Episode 2: Failure. Reason: 
+Episode 3: Failure. Reason: Episode 开始时检测到 NaN
+Episode 4: Failure. Reason: 
+Episode 5: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.231], device='cuda:0')
+Episode 6: Failure. Reason: 
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 162.05秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.22秒
+Episode 9: Failure. Reason: 
+Episode 10: Failure. Reason: Episode 开始时检测到 NaN
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.37秒
+Episode 2: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.164], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.94秒
+Episode 2: Failure. Reason: 
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 166.42秒
+Episode 4: Failure. Reason: 
+Episode 5: Failure. Reason: Episode 开始时检测到 NaN
+Episode 6: Failure. Reason: 
+Episode 7: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([23.056], device='cuda:0')
+Episode 8: Failure. Reason: 
+Episode 9: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.425], device='cuda:0')
+Episode 10: Failure. Reason: 
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 152.27秒
+Episode 12: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.428], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.074], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 205.12秒
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.001], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.63秒
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.698], device='cuda:0')
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.64秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.14秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 118.99秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.18秒
+Episode 7: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.437], device='cuda:0')
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.27秒
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 116.53秒
+Episode 10: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.344], device='cuda:0')
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.34秒
+Episode 12: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.233], device='cuda:0')
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.53秒
+Episode 14: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.144], device='cuda:0')
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.06秒
+Episode 16: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 133.62秒
+Episode 17: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.972], device='cuda:0')
+Episode 18: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.604], device='cuda:0')
+Episode 19: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.02秒
+Episode 20: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.01秒
+Episode 21: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.993], device='cuda:0')
+Episode 22: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 115.56秒
+Episode 23: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.413], device='cuda:0')
+Episode 24: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.070], device='cuda:0')
+Episode 25: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.259], device='cuda:0')
+Episode 26: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.090], device='cuda:0')
+Episode 27: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.007], device='cuda:0')
+Episode 28: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.01秒
+Episode 29: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.89秒
+Episode 30: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.622], device='cuda:0')
+Episode 31: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.473], device='cuda:0')
+Episode 32: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 117.64秒
+Episode 33: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.484], device='cuda:0')
+Episode 34: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.71秒
+Episode 35: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.47秒
+Episode 36: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.231], device='cuda:0')
+Episode 37: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 105.99秒
+Episode 38: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.458], device='cuda:0')
+Episode 39: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 120.92秒
+Episode 40: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.07秒
+Episode 41: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.01秒
+Episode 42: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.47秒
+Episode 43: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.054], device='cuda:0')
+Episode 44: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.37秒
+Episode 45: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.09秒
+Episode 46: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.75秒
+Episode 47: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 107.52秒
+Episode 48: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 104.70秒
+Episode 49: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.97秒
+Episode 50: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 116.93秒
+Episode 51: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.65秒
+Episode 52: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.653], device='cuda:0')
+Episode 53: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.20秒
+Episode 54: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.423], device='cuda:0')
+Episode 55: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.94秒
+Episode 56: Failure. Reason: 
+Episode 57: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.32秒
+Episode 58: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.599], device='cuda:0')
+Episode 59: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.13秒
+Episode 60: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.52秒
+Episode 61: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.465], device='cuda:0')
+Episode 62: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.23秒
+Episode 63: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.40秒
+Episode 64: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 110.99秒
+Episode 65: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.60秒
+Episode 66: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.74秒
+Episode 67: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.85秒
+Episode 68: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.96秒
+Episode 69: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.808], device='cuda:0')
+Episode 70: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 114.57秒
+Episode 71: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.82秒
+Episode 72: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.27秒
+Episode 73: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.62秒
+Episode 74: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.85秒
+Episode 75: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.43秒
+Episode 76: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.992], device='cuda:0')
+Episode 77: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.19秒
+Episode 78: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 128.21秒
+Episode 79: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.69秒
+Episode 80: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.147], device='cuda:0')
+Episode 81: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.49秒
+Episode 82: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.487], device='cuda:0')
+Episode 83: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.687], device='cuda:0')
+Episode 84: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.84秒
+Episode 85: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.69秒
+Episode 86: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.44秒
+Episode 87: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.52秒
