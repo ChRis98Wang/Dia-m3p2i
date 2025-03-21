@@ -2538,3 +2538,38 @@ Episode 40: Success. Reason: 任务成功：动作全为0且 planner.task_succes
 ========== Simulation Log N=1 ==========
 Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 234.28秒
 Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 210.83秒
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 238.81秒
+Episode 2: Failure. Reason: 
+Episode 3: Failure. Reason: 
+Episode 4: Failure. Reason: Episode 开始时检测到 NaN
+Episode 5: Failure. Reason: 
+Episode 6: Failure. Reason: Episode 开始时检测到 NaN
+Episode 7: Failure. Reason: 
+Episode 8: Failure. Reason: Episode 开始时检测到 NaN
+Episode 9: Failure. Reason: 
+Episode 10: Failure. Reason: Episode 开始时检测到 NaN
+Episode 11: Failure. Reason: 
+Episode 12: Failure. Reason: Episode 开始时检测到 NaN
+Episode 13: Failure. Reason: 
+Episode 14: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 235.43秒
+Episode 15: Failure. Reason: 
+Episode 16: Failure. Reason: 
+Episode 17: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 215.83秒
+Episode 18: Failure. Reason: 
+Episode 19: Failure. Reason: 
+Episode 20: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 200.23秒
+Episode 21: Failure. Reason: 
+Episode 22: Failure. Reason: 
+Episode 23: Failure. Reason: Episode 开始时检测到 NaN
+Episode 24: Failure. Reason: 
+Episode 25: Failure. Reason: Episode 开始时检测到 NaN
+Episode 26: Failure. Reason: 
+Episode 27: Failure. Reason: Episode 开始时检测到 NaN
+Episode 28: Failure. Reason: 
+Episode 29: Failure. Reason: Episode 开始时检测到 NaN
+Episode 30: Failure. Reason: 
+Episode 31: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 206.52秒
+Episode 32: Failure. Reason: 
+Episode 33: Failure. Reason: 
