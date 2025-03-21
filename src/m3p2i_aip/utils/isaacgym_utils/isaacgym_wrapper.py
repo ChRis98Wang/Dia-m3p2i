@@ -139,7 +139,7 @@ class IsaacGymWrapper:
         self._gym.refresh_rigid_body_state_tensor(self._sim)
         self._gym.refresh_net_contact_force_tensor(self._sim)
 
-    '''
+
     def reset(self):
         """
         将仿真状态恢复到初始状态：
@@ -257,7 +257,8 @@ class IsaacGymWrapper:
         """
 
         print("重置完成")
-
+    '''
+    '''
     def generate_random_positions(self):
         """
         生成三组随机的三维坐标：
@@ -329,7 +330,7 @@ class IsaacGymWrapper:
         # 返回结果列表，列表中的每个元素都可以通过索引 [] 访问
         return [obj_pos,target_pos]
 
-    '''
+
     @property
     def robot_pos(self):
         return torch.index_select(self._dof_state, 1, torch.tensor([0, 2], device=self.device))

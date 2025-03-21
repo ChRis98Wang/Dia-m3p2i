@@ -2527,3 +2527,14 @@ Episode 31: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.
 Episode 32: Failure. Reason: 
 Episode 33: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 60.67秒
 Episode 34: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.95秒
+Episode 35: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.02秒
+Episode 36: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 153.34秒
+Episode 37: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([35.131], device='cuda:0')
+Episode 38: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 160.00秒
+Episode 39: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 119.62秒
+Episode 40: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 150.79秒
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 234.28秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 210.83秒
