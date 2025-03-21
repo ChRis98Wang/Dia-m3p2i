@@ -110,7 +110,8 @@ class MPPI():
             cfg.u_max = -cfg.u_min
         self.u_min = cfg.u_min
         self.u_max = cfg.u_max
-        self.u_scale = cfg.u_scale
+        print
+        self.u_scale = 1#cfg.u_scale
 
         # Noise and input initialization
         self.noise_abs_cost = cfg.noise_abs_cost
@@ -201,12 +202,63 @@ class MPPI():
         self.update_cov = cfg.update_cov   # !! weird if set to True
         self.step_size_cov = 0.7
         self.kappa = 0.005
+        # diffuse parameter
+        self.temp_sample = 1
 
+        self.horizon_diffuse_factor = 0.9
+        self.traj_diffuse_factor = 0.5
+        self.Ndiffuse = 3
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        # 按照参考代码定义A, B 来生成sigmas
+        sigma0 = 1e-2
+        sigma1 = 1.0
+        A = sigma0
+        B = torch.log(torch.tensor(sigma1 / sigma0, device=device)) / self.Ndiffuse
+        # self.sigmas: shape [Ndiffuse], 每次diffuse迭代使用不同的噪声标度
+        self.sigmas = A * torch.exp(B * torch.arange(self.Ndiffuse, device=self.device, dtype=torch.float32))
+
+        # 定义Hnode = T - 1
+        self.Hnode = self.T - 1
+        # sigma_control[t] = (horizon_diffuse_factor)^(Hnode - t)
+        t_range = torch.arange(self.Hnode + 1, device=self.device, dtype=torch.float32)
+        self.sigma_control = self.horizon_diffuse_factor ** (self.Hnode - t_range)
+        #self.reset_internal_state()
+
+    def reset_internal_state(self):
+        """
+        重置 MPPI 内部状态，清除上一次规划遗留的数据。
+        可在每个 episode 开始前或者不使用 warm-start 时调用此方法。
+        """
+        self.mean_action = torch.zeros((self.T, self.nu), **self.tensor_args)
+        if self.multi_modal:
+            self.mean_action_1 = torch.zeros((self.T, self.nu), **self.tensor_args)
+            self.mean_action_2 = torch.zeros((self.T, self.nu), **self.tensor_args)
+            self.best_traj_1 = self.mean_action_1.clone()
+            self.best_traj_2 = self.mean_action_2.clone()
+        self.U = self.noise_dist.sample((self.T,))
+        self.delta = None
+        self.weights = torch.zeros(self.K, **self.tensor_args)
+        self.best_traj = self.mean_action.clone()
+        self.cost_total = None
+        self.cost_total_non_zero = None
+        self.total_costs = None
+
+        # 如果保存了上一次 roll-out 过程中的状态、动作或末端执行器状态，也一并重置
+        self.states = None
+        self.actions = None
+        self.ee_states = None
+        # 可根据需要重置其他缓存变量
+        import gc
+        torch.cuda.empty_cache()
+        gc.collect()
+        print("MPPI 内部状态已重置*************************************************")
     def _dynamics(self, state, u, t=None):
         return self.F(state, u, t=None)
 
     def _running_cost(self, state):
         return self.running_cost(state)
+    def reset(self):
+        print("this is reseting:",self.u_max)
 
     def command(self, state):
         """
@@ -216,6 +268,9 @@ class MPPI():
         if not torch.is_tensor(state):
             state = torch.tensor(state)
         self.state = state.to(**self.tensor_args)
+        if torch.isnan(self.mean_action).any():
+            print("检测到 mean_action 中存在 NaN，正在重置 MPPI 内部状态")
+            self.reset_internal_state()
 
         if self.mppi_mode == 'simple':
             self.U = torch.roll(self.U, -1, dims=0)
@@ -241,11 +296,14 @@ class MPPI():
                 self.best_traj_1 = self._shift_action(self.best_traj_1)
                 self.best_traj_2 = self._shift_action(self.best_traj_2)
 
-            cost_total = self._compute_total_cost_batch_halton()
+            #cost_total=self._compute_total_cost_batch_halton()
+            self._reverse(self.mean_action)
+            #mean_action = torch.clamp(mean_action, min=-2.0, max=2.0)
             action = torch.clone(self.mean_action) # !!
         
         # Compute top n trajs
         self.top_values, self.top_idx = torch.topk(self.weights, 20)
+
         if self.ee_states != 'None':
             self.top_trajs = torch.index_select(self.ee_states, 0, self.top_idx)
         else:
@@ -261,8 +319,166 @@ class MPPI():
                 action = torch.from_numpy(u_filtered).to('cpu')
             else:
                 action = torch.from_numpy(u_filtered).to('cuda')
+        #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        #print(action.shape)
         return action
-    
+    '''
+
+    def command(self, state):
+        """
+            Given a state, returns the best action sequence
+        """
+
+        if not torch.is_tensor(state):
+            state = torch.tensor(state)
+        self.state = state.to(**self.tensor_args)
+
+        if self.mppi_mode == 'simple':
+            self.U = torch.roll(self.U, -1, dims=0)
+
+            cost_total = self._compute_total_cost_batch_simple()  # [K]
+
+            beta = torch.min(cost_total)
+            self.cost_total_non_zero = _ensure_non_zero(cost_total, beta, 1 / self.lambda_)
+
+            eta = torch.sum(self.cost_total_non_zero)
+            self.weights = (1. / eta) * self.cost_total_non_zero  # [K]
+
+            self.U += torch.sum(self.weights.view(-1, 1, 1) * self.noise,
+                                dim=0)  # [K, 1, 1] * [K, T, nu] --> [T, nu] sum over K
+
+            action = self.U[:self.u_per_command]
+
+        elif self.mppi_mode == 'halton-spline':
+            # Shift command 1 time step [T, nu]
+            self.mean_action = self._shift_action(self.mean_action)
+            if self.multi_modal:
+                self.mean_action_1 = self._shift_action(self.mean_action_1)
+                self.mean_action_2 = self._shift_action(self.mean_action_2)
+                self.best_traj_1 = self._shift_action(self.best_traj_1)
+                self.best_traj_2 = self._shift_action(self.best_traj_2)
+
+            cost_total = self._compute_total_cost_batch_halton()
+            # self._reverse()
+            action = torch.clone(self.mean_action)  # !!
+
+        # Compute top n trajs
+        self.top_values, self.top_idx = torch.topk(self.weights, 20)
+        if self.ee_states != 'None':
+            self.top_trajs = torch.index_select(self.ee_states, 0, self.top_idx)
+        else:
+            self.top_trajs = torch.index_select(self.states, 0, self.top_idx)
+            pos_idx = torch.tensor([0, 2], device=self.device, dtype=torch.int32)
+            self.top_trajs = torch.index_select(self.top_trajs, 2, pos_idx)
+
+        # Smoothing with Savitzky-Golay filter
+        if self.filter_u:
+            u_ = action.cpu().numpy()
+            u_filtered = signal.savgol_filter(u_, self.sgf_window, self.sgf_order, deriv=0, delta=1.0, axis=0,
+                                              mode='interp', cval=0.0)
+            if self.device == "cpu":
+                action = torch.from_numpy(u_filtered).to('cpu')
+            else:
+                action = torch.from_numpy(u_filtered).to('cuda')
+        return action
+    '''
+    def _reverse_once(self, i,action):
+        # i 为当前扩散迭代索引，0 <= i < Ndiffuse
+        # 生成标准正态采样 eps
+        self.mean_action = action.clone()
+        print("reversing!!!!!!")
+        if self.sampling_method == 'random':
+            self.delta = self.get_samples(self.K, base_seed=0)
+        elif self.delta == None and self.sampling_method == 'halton':
+            self.delta = self.get_samples(self.K, base_seed=0)
+        # Add zero-noise seq so mean is always a part of samples
+        self.delta[-1,:,:] = self.Z_seq
+        #scaled_delta = torch.matmul(self.delta, torch.diag(self.scale_tril)).view(self.delta.shape[0], self.T, self.nu)
+        print("delta:", self.delta.shape)
+        #eps = torch.randn(self.K, self.T, self.nu, device=self.device)
+        #eps[-1, :, :] = self.Z_seq
+
+        # 计算迭代缩放因子
+        iteration_noise_scale = (self.traj_diffuse_factor ** i)
+        # 对每个时间步应用缩放
+        for t in range(self.T):
+            combined_scale =  iteration_noise_scale * self.sigma_control[t]
+            self.delta[:, t, :] *= combined_scale
+
+        #scaled_delta = self.delta @ torch.diag(torch.sqrt(torch.diag(self.noise_sigma)))
+        act_seq = action + self.delta
+        #act_seq[:,0]=self.mean_action[0,:]
+        #act_seq = torch.cat([act_seq, self.mean_action[None]], dim=0)
+        act_seq = scale_ctrl(act_seq, self.u_min, self.u_max, squash_fn=self.squash_fn)
+        self.perturbed_action = act_seq
+        #if self.multi_modal:
+            #act_seq[0, :, :] = self.best_traj_1
+            #act_seq[self.half_K, :, :] = self.best_traj_2
+        if self.env_type == "panda_env":
+            if self.gripper_command == "open":
+                self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
+            elif self.gripper_command == "close":
+                self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = -1.5
+        self.cost_total, self.states, self.actions, self.ee_states = self._compute_rollout_costs(self.perturbed_action)
+
+        #self.actions /= self.u_scale
+        #action_cost = self.get_action_cost()
+        #perturbation_cost = torch.sum(self.mean_action * action_cost, dim=(1, 2))
+        return self.mean_action
+
+
+    def _reverse(self,mean_action):
+        # 多次扩散迭代，从Ndiffuse-1到0，这里可以与参考代码保持一致的顺序，也可正向迭代
+        for i in range(self.Ndiffuse):
+            mean_action=self._reverse_once(i,mean_action)
+
+            print(mean_action[0,:])
+            mean_action = torch.clamp(mean_action, min=-2.0, max=2.0)
+            #assert torch.isfinite(mean_action).all()
+        self.mean_action=mean_action
+        action_cost = self.get_action_cost()
+        perturbation_cost = torch.sum(self.mean_action * action_cost, dim=(1, 2))
+    def _compute_total_cost_batch_halton(self):
+        """
+            Samples Halton splines once and then shifts mean according to control distribution. If random sampling is selected
+            then samples random noise at each step. Mean of control distribution is updated using gradient
+        """
+        if self.sampling_method == 'random':
+            self.delta = self.get_samples(self.K, base_seed=0)
+        elif self.delta == None and self.sampling_method == 'halton':
+            self.delta = self.get_samples(self.K, base_seed=0)
+        # Add zero-noise seq so mean is always a part of samples
+        self.delta[-1,:,:] = self.Z_seq
+        # Keeps the size but scales values
+        scaled_delta = torch.matmul(self.delta, torch.diag(self.scale_tril)).view(self.delta.shape[0], self.T, self.nu)
+        print("delta:", self.delta.shape)
+        # First time mean is zero then it is updated in the distribution
+        if self.multi_modal:
+            act_seq_1 = self.mean_action_1 + scaled_delta[:self.half_K, :, :]
+            act_seq_2 = self.mean_action_2 + scaled_delta[self.half_K:, :, :]
+            act_seq = torch.cat((act_seq_1, act_seq_2), 0)
+        else:
+            act_seq = self.mean_action + scaled_delta
+        # Scales action within bounds. act_seq is the same as perturbed actions
+        act_seq = scale_ctrl(act_seq, self.u_min, self.u_max, squash_fn=self.squash_fn)
+        if self.multi_modal:
+            act_seq[0, :, :] = self.best_traj_1
+            act_seq[self.half_K, :, :] = self.best_traj_2
+        self.perturbed_action = torch.clone(act_seq)
+        if self.env_type == "panda_env":
+            if self.gripper_command == "open":
+                self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
+            elif self.gripper_command == "close":
+                self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = -1.5
+        self.cost_total, self.states, self.actions, self.ee_states = self._compute_rollout_costs(self.perturbed_action)
+
+        self.actions /= self.u_scale
+        action_cost = self.get_action_cost()
+        # Action perturbation cost
+        perturbation_cost = torch.sum(self.mean_action * action_cost, dim=(1, 2))
+        # if not self.multi_modal:
+        #     self.cost_total += perturbation_cost
+        return self.cost_total
     def _shift_action(self, action_seq):
         """
             Given an action_seq [T, nu], make a time shifted sequence
@@ -295,7 +511,7 @@ class MPPI():
 
         for t in range(T):
             u = self.u_scale * perturbed_actions[:, t]
-
+            #u =  perturbed_actions[:, t]
             # Last rollout is a braking manover
             if self.sample_null_action:
                 u[self.K -1, :] = torch.zeros_like(u[self.K -1, :])
@@ -378,54 +594,7 @@ class MPPI():
         return action
 
     #################### Halton Sampling ####################
-    def _compute_total_cost_batch_halton(self):
-        """
-            Samples Halton splines once and then shifts mean according to control distribution. If random sampling is selected 
-            then samples random noise at each step. Mean of control distribution is updated using gradient
-        """
-        if self.sampling_method == 'random':
-            self.delta = self.get_samples(self.K, base_seed=0)
-        elif self.delta == None and self.sampling_method == 'halton':
-            self.delta = self.get_samples(self.K, base_seed=0)
 
-        # Add zero-noise seq so mean is always a part of samples
-        self.delta[-1,:,:] = self.Z_seq
-        # Keeps the size but scales values
-        scaled_delta = torch.matmul(self.delta, torch.diag(self.scale_tril)).view(self.delta.shape[0], self.T, self.nu)
-
-        # First time mean is zero then it is updated in the distribution
-        if self.multi_modal:
-            act_seq_1 = self.mean_action_1 + scaled_delta[:self.half_K, :, :]
-            act_seq_2 = self.mean_action_2 + scaled_delta[self.half_K:, :, :]
-            act_seq = torch.cat((act_seq_1, act_seq_2), 0)
-        else:
-            act_seq = self.mean_action + scaled_delta
-
-        # Scales action within bounds. act_seq is the same as perturbed actions
-        act_seq = scale_ctrl(act_seq, self.u_min, self.u_max, squash_fn=self.squash_fn)
-
-        if self.multi_modal:
-            act_seq[0, :, :] = self.best_traj_1
-            act_seq[self.half_K, :, :] = self.best_traj_2
-        
-        self.perturbed_action = torch.clone(act_seq)
-        if self.env_type == "panda_env":
-            if self.gripper_command == "open":
-                self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
-            elif self.gripper_command == "close":
-                self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = -1.5
-
-        self.cost_total, self.states, self.actions, self.ee_states = self._compute_rollout_costs(self.perturbed_action)
-
-        self.actions /= self.u_scale
-
-        action_cost = self.get_action_cost()
-
-        # Action perturbation cost
-        perturbation_cost = torch.sum(self.mean_action * action_cost, dim=(1, 2))
-        # if not self.multi_modal:
-        #     self.cost_total += perturbation_cost
-        return self.cost_total
 
     def _exp_util(self, costs):
         """

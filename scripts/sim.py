@@ -25,23 +25,34 @@ def run_sim(cfg: ExampleConfig):
         device=cfg.mppi.device,
         cube_on_shelf=cfg.cube_on_shelf,
     )
-
+    noise_paraA= 0.9
+    noise_paraB=0.8
     planner = zerorpc.Client()
     planner.connect("tcp://127.0.0.1:4242")
     print("Server found and wait for the viewer")
     for _ in range(150):
         sim.step()
     print("Start simulation!")
-
+    total_runs=100
+    run_ids=0
     t = time.time()
     for i in range(10000):
+
         sim.update_dyn_obs(i)
         sim.play_with_cube()
-
+        #print(noise_paraA)
+        cubeA_id = sim._get_actor_index_by_name("cubeA")
+        cubeA_pos = sim._root_state[:, cubeA_id, :2]
+        cubeB_id = sim._get_actor_index_by_name("cubeB")
+        cubeB_pos = sim._root_state[:, cubeB_id, :2]
+        #print(cubeA_pos, cubeB_pos)
+        dist =torch.norm(cubeA_pos - cubeB_pos, dim=-1)
+        print(dist)
         action = bytes_to_torch(
             planner.run_tamp(
-                torch_to_bytes(sim._dof_state), torch_to_bytes(sim._root_state))
+                torch_to_bytes(sim._dof_state), torch_to_bytes(sim._root_state),33)
         )
+
         sim.set_dof_velocity_target_tensor(action)
 
         cfg.suction_active = bytes_to_torch(
@@ -51,9 +62,9 @@ def run_sim(cfg: ExampleConfig):
 
         sim.step()
 
-        # sim.visualize_trajs(
-        #     bytes_to_torch(planner.get_trajs())
-        # )
+        #sim.visualize_trajs(
+             #bytes_to_torch(planner.get_trajs())
+         #)
         
         t = time_tracking(t, cfg)
 

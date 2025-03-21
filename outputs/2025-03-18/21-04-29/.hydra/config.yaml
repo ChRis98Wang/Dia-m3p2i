@@ -1,0 +1,155 @@
+mppi:
+  num_samples: 600
+  horizon: 14
+  nx: 18
+  mppi_mode: halton-spline
+  sampling_method: random
+  noise_sigma:
+  - - 10.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 10.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 10.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 10.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 10.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 10.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 10.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.8
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.8
+  noise_mu: null
+  device: cuda:0
+  lambda_: 0.05
+  update_lambda: false
+  update_cov: false
+  u_min:
+  - -2.0
+  - -2.0
+  - -2.0
+  - -2.0
+  - -2.0
+  - -2.0
+  - -2.0
+  - -1.5
+  - -1.5
+  u_max:
+  - 2.0
+  - 2.0
+  - 2.0
+  - 2.0
+  - 2.0
+  - 2.0
+  - 2.0
+  - 1.5
+  - 1.5
+  u_init: 0.0
+  U_init: null
+  u_scale: 1.0
+  u_per_command: 12
+  rollout_var_discount: 0.95
+  sample_null_action: true
+  sample_previous_plan: true
+  sample_other_priors: false
+  noise_abs_cost: false
+  filter_u: true
+  use_priors: false
+  seed_val: 0
+  eta_u_bound: 10
+  eta_l_bound: 5
+isaacgym:
+  dt: 0.01
+  substeps: 2
+  use_gpu_pipeline: true
+  num_threads: 14
+  viewer: false
+  spacing: 2.0
+  camera_pos:
+  - 0.0
+  - 1.5
+  - 2.8
+  camera_target:
+  - 0.0
+  - 0.0
+  - 1.0
+render: ???
+n_steps: ???
+env_type: panda_env
+task: reactive_pick
+goal: ???
+nx: ???
+actors: ???
+initial_actor_positions: ???
+kp_suction: 0
+suction_active: false
+multi_modal: false
+pre_height_diff: 0.05
+cube_on_shelf: false

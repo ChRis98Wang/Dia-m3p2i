@@ -78,7 +78,7 @@ class M3P2I(mppi.MPPI):
         self.best_traj_2 = torch.index_select(actions, 0, self.best_idx_2+self.half_K).squeeze(0)
        
         weighted_seq = self.weights.view(-1, 1, 1) * actions # [K, T, nu]
-        # print(actions)
+        #print(actions)
         self.mean_action_1 = torch.sum(self.weights_1.view(-1, 1, 1) * actions[:self.half_K], dim=0)
         self.mean_action_2 = torch.sum(self.weights_2.view(-1, 1, 1) * actions[self.half_K:], dim=0)
 

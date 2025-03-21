@@ -68,9 +68,9 @@ def load_asset(gym, sim, actor_cfg):
         noise = np.random.normal(loc=0, scale=noise_sigma, size=3)
         actor_asset = gym.create_box(
             sim=sim,
-            width=actor_cfg.size[0] + noise[0],
-            height=actor_cfg.size[1] + noise[1],
-            depth=actor_cfg.size[2] + noise[2],
+            width=actor_cfg.size[0], #+ noise[0],
+            height=actor_cfg.size[1], #+ noise[1],
+            depth=actor_cfg.size[2] ,#+ noise[2],
             options=asset_options,
         )
     elif actor_cfg.type == "sphere":
@@ -81,7 +81,7 @@ def load_asset(gym, sim, actor_cfg):
         noise = np.random.normal(loc=0, scale=noise_sigma, size=1)
         actor_asset = gym.create_sphere(
             sim=sim,
-            radius=actor_cfg.size[0] + noise[0],
+            radius=actor_cfg.size[0], #+ noise[0],
             options=asset_options,
         )
     else:

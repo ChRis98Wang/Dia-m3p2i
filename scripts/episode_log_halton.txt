@@ -1,0 +1,25 @@
+========== Simulation Log ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.45秒
+========== Simulation Log ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.45秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 175.61秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 109.86秒
+Episode 4: Failure. Reason: 本回合超时
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 131.09秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.09秒
+Episode 7: Failure. Reason: 本回合超时
+Episode 8: Failure. Reason: 本回合超时
+Episode 9: Failure. Reason: 本回合超时
+Episode 10: Failure. Reason: 本回合超时
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 39.04秒
+Episode 12: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.51秒
+Episode 13: Failure. Reason: 本回合超时
+Episode 14: Failure. Reason: 本回合超时
+Episode 15: Failure. Reason: 本回合超时
+Episode 16: Failure. Reason: 本回合超时
+Episode 17: Failure. Reason: 本回合超时
+Episode 18: Failure. Reason: 本回合超时
+Episode 19: Failure. Reason: 本回合超时
+Episode 20: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 26.73秒
+Episode 21: Failure. Reason: 本回合超时
+Episode 22: Failure. Reason: 本回合超时

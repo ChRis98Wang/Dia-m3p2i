@@ -1,0 +1,7 @@
+type: "sphere"
+name: "dyn-obs_"
+size: [0.04]
+# init_pos: [0, 0.0, 5]
+init_pos: [0.2, 0.1, 1]
+color: [.5, .2, .0]
+gravity: False

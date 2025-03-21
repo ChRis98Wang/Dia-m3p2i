@@ -44,6 +44,8 @@ class PLANNER_AIF_PANDA(PLANNER_SIMPLE):
         self.task = "idle"
         self.curr_goal = torch.zeros(7, device=self.device)
         self.curr_action = "idle"
+        self.initial_task = self.task
+        self.initial_goal = self.curr_goal.clone()
         # Define the required mdp structures from the templates
         mdp_isCubeAt = isaac_state_action_templates.MDPIsCubeAtReal()
 
@@ -85,9 +87,9 @@ class PLANNER_AIF_PANDA(PLANNER_SIMPLE):
         self.pre_place_loc = cube_goal.clone()
         self.pre_place_loc[2] += self.pre_pick_place_threshold # 0.053
         self.get_obs(cube_state, cube_goal, self.ee_state)
-        # print("obs", self.obs)
+        print("obs", self.obs)
         outcome, self.curr_action = adaptive_action_selection.adapt_act_sel(self.ai_agent_task, [self.obs])
-        # print('Current action:', self.curr_action)
+        print('Current action:', self.curr_action)
 
         self.task = self.curr_action
         if self.curr_action == "reach":
@@ -96,7 +98,17 @@ class PLANNER_AIF_PANDA(PLANNER_SIMPLE):
             self.curr_goal = self.pre_place_loc
         elif self.curr_action == "place":
             pass
-    
+
+    def reset_plan(self):
+        """
+        重置 PLANNER_AIF_PANDA 的内部状态，确保任务和目标恢复到初始值，
+        并重置 pick_always 和 place_always 标志，以避免旧状态影响新 episode。
+        """
+        self.task = self.initial_task
+        self.curr_goal = self.initial_goal.clone()
+        self.pick_always = False
+        self.place_always = False
+        print("PLANNER_AIF_PANDA 内部状态已重置")
     def check_task_success(self, sim):
         cube_state = sim.get_actor_link_by_name("cubeA", "box")[0, :7]
         cube_goal = sim.get_actor_link_by_name("cubeB", "box")[0, :7]
@@ -105,6 +117,8 @@ class PLANNER_AIF_PANDA(PLANNER_SIMPLE):
         if self.task == 'place' and dist_cost < 0.04:
             flag = True
         return flag
+
+
 
 class PLANNER_PATROLLING(PLANNER_SIMPLE):
     def __init__(self, goals) -> None:
