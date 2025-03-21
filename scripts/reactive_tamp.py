@@ -20,6 +20,36 @@ Run in the command line:
 '''
 
 
+def print_actor_positions(sim, actor_names=["panda", "cubeA", "cubeB", "dyn-obs"]):
+    for name in actor_names:
+        try:
+            idx = sim._get_actor_index_by_name(name)
+            pos = sim._root_state[:, idx, 0:3]
+            print(f"Actor '{name}' (索引 {idx.item()}) 的位置: {pos}")
+        except ValueError as e:
+            print(f"无法找到 actor '{name}'，错误信息：{e}")
+def print_state_statistics(sim):
+    # 打印 _root_state 的统计信息
+    root_state = sim._root_state
+    print("----- _root_state 统计信息 -----")
+    print("Min:", torch.min(root_state))
+    print("Max:", torch.max(root_state))
+    print("Mean:", torch.mean(root_state))
+    print("Std:", torch.std(root_state))
+    print("Contains NaN:", torch.isnan(root_state).any())
+
+    # 打印 _dof_state 的统计信息
+    dof_state = sim._dof_state
+    print("----- _dof_state 统计信息 -----")
+    print("Min:", torch.min(dof_state))
+    print("Max:", torch.max(dof_state))
+    print("Mean:", torch.mean(dof_state))
+    print("Std:", torch.std(dof_state))
+    print("Contains NaN:", torch.isnan(dof_state).any())
+
+
+
+
 class REACTIVE_TAMP:
     def __init__(self, cfg) -> None:
         self.sim = wrapper.IsaacGymWrapper(
@@ -41,6 +71,7 @@ class REACTIVE_TAMP:
             dynamics=self.dynamics,
             running_cost=self.running_cost
         )
+
 
     def reset_planner(self):
         self.task_planner.reset_plan()
@@ -90,7 +121,8 @@ class REACTIVE_TAMP:
         self.sim._root_state[:] = bytes_to_torch(root_state)
         self.sim.set_dof_state_tensor(self.sim._dof_state)
         self.sim.set_actor_root_state_tensor(self.sim._root_state)
-
+        #print_state_statistics(self.sim)
+        #print_actor_positions(self.sim)
         self.tamp_interface()
         print(f"noise factor is :%d", factor)
 
@@ -102,7 +134,7 @@ class REACTIVE_TAMP:
         else:
             print("--------Compute optimal action--------")
             print()
-
+            #self.debug_planner_output(planner, self.sim)
             return torch_to_bytes(
                 self.motion_planner.command(self.sim._dof_state[0])[0]
             )
@@ -133,6 +165,10 @@ class REACTIVE_TAMP:
 
     def get_suction(self):
         return torch_to_bytes(self.suction_active)
+
+
+
+
 
 
 @hydra.main(version_base=None, config_path="../src/m3p2i_aip/config", config_name="config_point")

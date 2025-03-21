@@ -10,7 +10,7 @@ class IsaacGymConfig():
     dt: float = 0.05 # 0.01
     substeps: int = 2
     use_gpu_pipeline: bool = True
-    num_threads: int = 14
+    num_threads: int = 12
     viewer: bool = False
     spacing: float = 10 # !! 2.0
     camera_pos: List[float] = field(default_factory=lambda: [1.5, 6, 8])
@@ -25,7 +25,7 @@ def parse_isaacgym_config(cfg: IsaacGymConfig, device: str = "cuda:0") -> gymapi
     sim_params.up_axis = gymapi.UP_AXIS_Z
     sim_params.gravity = gymapi.Vec3(0.0, 0.0, -9.8)
 
-    sim_params.physx.solver_type = 1
+    sim_params.physx.solver_type = 2
     sim_params.physx.num_position_iterations = 8
     sim_params.physx.num_velocity_iterations = 2
     sim_params.physx.contact_offset = 0.02
@@ -110,6 +110,12 @@ class IsaacGymWrapper:
         """保存当前状态作为初始状态，用于reset。"""
         self._initial_dof_state = self._dof_state.clone()
         self._initial_root_state = self._root_state.clone()
+        try:
+            panda_idx = self._get_actor_index_by_name("panda")
+            print("保存的机械臂初始位置:", self._initial_root_state[:, panda_idx, 0:3])
+            print("保存的机械臂初始关节状态:", self._initial_dof_state[:, panda_idx])
+        except Exception as e:
+            print("保存机械臂状态时出错:", e)
 
     def acquire_states(self):
         self.num_dofs = self._gym.get_sim_dof_count(self._sim)
@@ -149,7 +155,7 @@ class IsaacGymWrapper:
         """
         print("重置环境中")
         self._root_state.copy_(self._initial_root_state)
-
+        self._dof_state.copy_(self._initial_dof_state)
         random_pos = self.generate_random_positions()
 
         # 获取需要更新位置的 actor 的索引（假设 env_cfg 中的顺序和 root_state 中一致）
@@ -160,15 +166,15 @@ class IsaacGymWrapper:
 
         # 更新所有环境中这些 actor 的位置
         for env in range(self.num_envs):
-            self._root_state[env, cubeA_idx, 0:3] = torch.tensor(random_pos[0], device=self.device)
-            self._root_state[env, cubeB_idx, 0:3] = torch.tensor(random_pos[1], device=self.device)
+            self._root_state[env, cubeA_idx, 0:3] = torch.tensor(random_pos[0], dtype=self._root_state.dtype,device=self.device)
+            self._root_state[env, cubeB_idx, 0:3] = torch.tensor(random_pos[1], dtype=self._root_state.dtype,device=self.device)
 
             #self._root_state[env, dyn_obs_idx, 0:3] = torch.tensor(random_pos[0], device=self.device)
             #self._root_state[env, cubeC_idx, 0:3] = torch.tensor(random_pos[2], device=self.device)
             #self._root_state[env, dyn_obs_idx_, 0:3] = torch.tensor(random_pos[3], device=self.device)
         # 恢复初始状态（注意：使用 copy_ 保持张量指针不变）
         self._gym.set_actor_root_state_tensor(self._sim, gymtorch.unwrap_tensor(self._root_state))
-        self._dof_state.copy_(self._initial_dof_state)
+        #self._dof_state.copy_(self._initial_dof_state)
 
         self._gym.set_dof_state_tensor(self._sim, gymtorch.unwrap_tensor(self._dof_state))
         # 将更新后的 root_state 同步到 Isaac Gym 中
@@ -179,10 +185,23 @@ class IsaacGymWrapper:
         self._gym.refresh_dof_state_tensor(self._sim)
         self._gym.refresh_rigid_body_state_tensor(self._sim)
         self._gym.refresh_net_contact_force_tensor(self._sim)
-
-        # 如果需要，可以进行一次仿真步确保状态更新
         self.step()
         self.update_actor_indices()
+        # 如果检测到机械臂状态出现 NaN，使用初始状态修正
+        try:
+            panda_idx = self._get_actor_index_by_name("panda")
+            if torch.isnan(self._root_state[:, panda_idx, :]).any():
+                print("机械臂状态出现 NaN，使用初始状态修正")
+                self._root_state[:, panda_idx, :] = self._initial_root_state[:, panda_idx, :]
+                self._gym.set_actor_root_state_tensor(self._sim, gymtorch.unwrap_tensor(self._root_state))
+        except Exception as e:
+            print("检查机械臂状态出错：", e)
+
+        # 针对机械臂的特殊初始化（确保关节、末端等状态恢复正确）
+        self.set_initial_joint_pose()
+
+        # 如果需要，可以进行一次仿真步确保状态更新
+
         """"
         self._dof_state.copy_(self._initial_dof_state)
         self._root_state.copy_(self._initial_root_state)
@@ -317,13 +336,13 @@ class IsaacGymWrapper:
         # y_dynamic_ = y_static- 0.25
         # 固定的z坐标
         # z_dynamic = 1.138
-        z_target = 1.2
-        # z_static = 1.05
+        z_target = 1.15
+        z_obj = 1.06
 
         # 构造每个物体的位置列表
         # dynamic_pos = [x_dynamic, y_static, z_dynamic]
         target_pos = [x_target, y_target, z_target]
-        obj_pos = [x_obj, y_obj, z_target]
+        obj_pos = [x_obj, y_obj, z_obj]
         # static_pos = [x_static, y_static, z_static]
         #
         #dynamic_pos_ = [x_target, y_dynamic_, z_dynamic]
@@ -438,7 +457,7 @@ class IsaacGymWrapper:
             offsets0 = torch.tensor([0.01, 0.01, 0], dtype=torch.float32, device=self.device)
             offsets1 = torch.tensor([0.01, 0.01, 0], dtype=torch.float32, device=self.device)
         else:
-            offsets0 = torch.tensor([0.00, 0.003, 0.00], dtype=torch.float32, device=self.device)
+            offsets0 = torch.tensor([0.003, 0.00, 0.00], dtype=torch.float32, device=self.device)
             offsets1 = torch.tensor([0.002, 0.000, 0.00], dtype=torch.float32, device=self.device)
         #current_period = period + int(10 * torch.sin(i_tensor * 0.01))
 
@@ -852,3 +871,14 @@ class IsaacGymWrapper:
         self.start_sim()  # 这里会重新调用创建仿真、环境、actor及状态的流程
         self.update_actor_indices()  # 更新映射
         print("全重置完成，新仿真环境已创建。")
+
+    def _save_successful_robot_state(self):
+        """保存任务成功时的机械臂状态，用于后续重置"""
+        robot_idx = self._get_actor_index_by_name("panda")
+        if robot_idx is not None:
+            # 创建机械臂状态的深度复制
+            self._successful_robot_pose = {
+                'root_state': self._root_state[:, robot_idx].clone(),
+                'dof_state': self._dof_state.clone()  # 保存所有DOF状态
+            }
+            print("已记录成功状态的机械臂位姿")
