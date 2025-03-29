@@ -2927,3 +2927,9 @@ Episode 20: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.
 ========== Simulation Log N=1 ==========
 Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([14.219], device='cuda:0')
 Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.014], device='cuda:0')
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 110.18秒
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.123], device='cuda:0')
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.475], device='cuda:0')
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.03秒
