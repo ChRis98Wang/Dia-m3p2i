@@ -125,7 +125,7 @@ def run_sim(cfg: ExampleConfig):
             # 假设 "dyn-obs" 对应的 actor 在 sim.env_cfg 中保存了 handle
 
             dyn_obs_force = sim.get_actor_contact_forces_by_name("dyn-obs",
-                                                                 "panda") #+ sim.get_actor_contact_forces_by_name( "dyn-obs_", "panda")
+                                                                 "panda") + sim.get_actor_contact_forces_by_name( "dyn-obs_", "panda")
             force_norm = torch.linalg.norm(dyn_obs_force, dim=1)
             # static_obs_force = sim.get_actor_contact_forces_by_name("cubeC", "box")
             # static_force_norm = torch.linalg.norm(static_obs_force, dim=1)

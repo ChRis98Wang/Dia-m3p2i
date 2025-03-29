@@ -289,11 +289,11 @@ class Objective(object):
     def get_motion_cost(self, sim):
         if self.cfg.env_type == 'point_env':
             obs_force = sim.get_actor_contact_forces_by_name("dyn-obs", "box")  # [num_envs, 3]
-        elif self.cfg.env_type == 'panda_env'or self.cfg.env_type == 'panda_env_LiftedObstaclesShelf':
+        elif self.cfg.env_type == 'panda_env'or self.cfg.env_type == 'panda_env_LiftedObstaclesShelf'or self.cfg.env_type=="panda_env_2dyn":
             static_force = (
-                            sim.get_actor_contact_forces_by_name("cubeC", "box")+
-                            sim.get_actor_contact_forces_by_name("cubeD", "box")+
-                            sim.get_actor_contact_forces_by_name("cubeE", "box")+
+                            #sim.get_actor_contact_forces_by_name("cubeC", "box")+
+                            #sim.get_actor_contact_forces_by_name("cubeD", "box")+
+                            #sim.get_actor_contact_forces_by_name("cubeE", "box")+
                             sim.get_actor_contact_forces_by_name("shelf_stand", "box")
                             )
                             #sim.get_actor_contact_forces_by_name("cubeE", "box"))

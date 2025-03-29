@@ -331,12 +331,12 @@ class IsaacGymWrapper:
         # 分别生成三个位置的y坐标（均在[-0.42, 0.42]内）
         # y_dynamic = torch.empty(1).uniform_(-0.4, 0.4).item()
         y_target = torch.empty(1).uniform_(0.3,0.32).item()
-        y_obj = torch.empty(1).uniform_(-0.32,-0.3).item()
+        y_obj = torch.empty(1).uniform_(-0.42,-0.4).item()
         # y_static = torch.empty(1).uniform_(-0.4, 0.4).item()
         # y_dynamic_ = y_static- 0.25
         # 固定的z坐标
         # z_dynamic = 1.138
-        z_target = 1.15
+        z_target = 1.06
         z_obj = 1.06
 
         # 构造每个物体的位置列表

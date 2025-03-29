@@ -1,0 +1,5 @@
+type: "box"
+name: "shelf_stand"
+size: [.4,.05, .05 ]
+init_pos: [0, 0., 1.05]
+fixed: True

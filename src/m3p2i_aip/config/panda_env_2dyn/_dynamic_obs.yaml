@@ -1,0 +1,7 @@
+type: "box"
+name: "dyn-obs_"
+size: [.05, .05, .05]
+# init_pos: [0, 0.0, 5]
+init_pos: [0, 0., 1.115]
+color: [.5, .2, .0]
+gravity: False
