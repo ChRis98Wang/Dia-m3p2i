@@ -121,8 +121,8 @@ class PLANNER_AIF_PANDA(PLANNER_SIMPLE):
         cube_goal = sim.get_actor_link_by_name("cubeB", "box")[0, :7]
         dist_cost = torch.linalg.norm(self.curr_goal[:3] - cube_state[:3])
         flag = False
-        #if self.task == 'place' and dist_cost < 0.04:
-        if dist_cost < 0.04:
+        if self.task == 'place' and dist_cost < 0.04:
+        #if dist_cost < 0.01:
             flag = True
         return flag
 

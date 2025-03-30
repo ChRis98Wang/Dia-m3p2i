@@ -3318,3 +3318,477 @@ Episode 148: Success. Reason: 任务成功：动作全为0且 planner.task_succe
 Episode 149: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 63.36秒
 Episode 150: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 63.99秒
 Episode 150结束。当前成功次数: 144，失败次数: 6========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.191], device='cuda:0')
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.149], device='cuda:0')
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.149], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.579], device='cuda:0')
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([32.037], device='cuda:0')
+Episode 4: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.354], device='cuda:0')
+Episode 5: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([14.053], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.145], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.05秒
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.33秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.10秒
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([14.979], device='cuda:0')
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([24.438], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 65.67秒
+Episode 2: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([12.035], device='cuda:0')
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 68.25秒
+Episode 5: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 6: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 69.25秒
+Episode 8: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([12.056], device='cuda:0')
+Episode 9: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 10: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([9.186], device='cuda:0')
+Episode 11: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([8.577], device='cuda:0')
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.01秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 68.28秒
+Episode 3: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([16.088], device='cuda:0')
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 69.56秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.06秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.65秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 65.57秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 66.98秒
+Episode 7: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([15.697], device='cuda:0')
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 70.08秒
+Episode 9: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([15.853], device='cuda:0')
+Episode 10: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([12.434], device='cuda:0')
+Episode 11: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([17.150], device='cuda:0')
+Episode 12: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([7.043], device='cuda:0')
+Episode 13: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([25.468], device='cuda:0')
+Episode 14: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 65.98秒
+Episode 15: Failure. Reason: 检测到动态障碍碰撞，接触力: tensor([11.755], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 71.81秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.55秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.17秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 70.64秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.22秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.59秒
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.00秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 71.34秒
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 70.17秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 69.90秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 73.46秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.31秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.12秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 70.32秒
+Episode 6: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.040], device='cuda:0'), tensor([0.], device='cuda:0')
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.68秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.27秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.86秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.60秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.58秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.54秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 85.87秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 86.59秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.90秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.34秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.61秒
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 86.90秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.12秒
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.03秒
+Episode 10: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.53秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.70秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.11秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.93秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.37秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.53秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.76秒
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.86秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.86秒
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.95秒
+Episode 10: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.11秒
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.17秒
+Episode 12: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.50秒
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.78秒
+Episode 14: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.28秒
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.97秒
+Episode 16: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.51秒
+Episode 17: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.11秒
+Episode 18: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 105.93秒
+Episode 19: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.70秒
+Episode 20: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 108.64秒
+Episode 21: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 111.48秒
+Episode 22: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.07秒
+Episode 23: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.65秒
+Episode 24: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.63秒
+Episode 25: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 104.31秒
+Episode 26: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.75秒
+Episode 27: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.29秒
+Episode 28: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.60秒
+Episode 29: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.50秒
+Episode 30: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.27秒
+Episode 31: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 107.39秒
+Episode 32: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.43秒
+Episode 33: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.72秒
+Episode 34: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.05秒
+Episode 35: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.98秒
+Episode 36: Failure. Reason: 
+Episode 37: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.81秒
+Episode 38: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.42秒
+Episode 39: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.87秒
+Episode 40: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.39秒
+Episode 41: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 112.60秒
+Episode 42: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.96秒
+Episode 43: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.56秒
+Episode 44: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.90秒
+Episode 45: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.72秒
+Episode 46: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.78秒
+Episode 47: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 89.59秒
+Episode 48: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.18秒
+Episode 49: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 107.88秒
+Episode 50: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.58秒
+Episode 51: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.74秒
+Episode 52: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 104.13秒
+Episode 53: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.48秒
+Episode 54: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 104.44秒
+Episode 55: Failure. Reason: 
+Episode 56: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.65秒
+Episode 57: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.73秒
+Episode 58: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.39秒
+Episode 59: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.03秒
+Episode 60: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 102.22秒
+Episode 61: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.22秒
+Episode 62: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.64秒
+Episode 63: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.80秒
+Episode 64: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.87秒
+Episode 65: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.38秒
+Episode 66: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 89.69秒
+Episode 67: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.73秒
+Episode 68: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.29秒
+Episode 69: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.33秒
+Episode 70: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 100.31秒
+Episode 71: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.35秒
+Episode 72: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 105.38秒
+Episode 73: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.90秒
+Episode 74: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.40秒
+Episode 75: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.73秒
+Episode 76: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.98秒
+Episode 77: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 113.39秒
+Episode 78: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 106.21秒
+Episode 79: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 109.67秒
+Episode 80: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 97.86秒
+Episode 81: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.26秒
+Episode 82: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.46秒
+Episode 83: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.37秒
+Episode 84: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.47秒
+Episode 85: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 93.14秒
+Episode 86: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.88秒
+Episode 87: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.91秒
+Episode 88: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 107.36秒
+Episode 89: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.01秒
+Episode 90: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 96.43秒
+Episode 91: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.88秒
+Episode 92: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.18秒
+Episode 93: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.00秒
+Episode 94: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.82秒
+Episode 95: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.49秒
+Episode 96: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.08秒
+Episode 97: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 101.75秒
+Episode 98: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 103.55秒
+Episode 99: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.60秒
+Episode 100: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 99.75秒
+Episode 100结束。当前成功次数: 98，失败次数: 2========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 59.24秒
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.61秒
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.95秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.90秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.48秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.39秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.68秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.01秒
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 84.75秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.63秒
+Episode 9: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.67秒
+Episode 10: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.52秒
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.23秒
+Episode 12: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.14秒
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.20秒
+Episode 14: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.32秒
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.44秒
+Episode 16: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.46秒
+Episode 17: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.84秒
+Episode 18: Failure. Reason: 
+Episode 19: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 84.96秒
+Episode 20: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 82.94秒
+Episode 21: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.52秒
+Episode 22: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 88.33秒
+Episode 23: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 85.35秒
+Episode 24: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.11秒
+Episode 25: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.60秒
+Episode 26: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.77秒
+Episode 27: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 82.96秒
+Episode 28: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.33秒
+Episode 29: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.00秒
+Episode 30: Failure. Reason: 
+Episode 31: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.021], device='cuda:0')
+Episode 32: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.27秒
+Episode 33: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 89.42秒
+Episode 34: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 89.30秒
+Episode 35: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 82.79秒
+Episode 36: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 85.96秒
+Episode 37: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.49秒
+Episode 38: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.99秒
+Episode 39: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.21秒
+Episode 40: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.38秒
+Episode 41: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.44秒
+Episode 42: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.99秒
+Episode 43: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.30秒
+Episode 44: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.48秒
+Episode 45: Failure. Reason: 
+Episode 46: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 83.51秒
+Episode 47: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.90秒
+Episode 48: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.59秒
+Episode 49: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 92.66秒
+Episode 50: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 74.98秒
+Episode 51: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.67秒
+Episode 52: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 83.28秒
+Episode 53: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.31秒
+Episode 54: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.42秒
+Episode 55: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 87.71秒
+Episode 56: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 76.46秒
+Episode 57: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 83.22秒
+Episode 58: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.47秒
+Episode 59: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 79.95秒
+Episode 60: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 73.09秒
+Episode 61: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 73.77秒
+Episode 62: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.58秒
+Episode 63: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.25秒
+Episode 64: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.39秒
+Episode 65: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 82.29秒
+Episode 66: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 79.88秒
+Episode 67: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 136.54秒
+Episode 68: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 79.37秒
+Episode 69: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 79.66秒
+Episode 70: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 84.25秒
+Episode 71: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 79.28秒
+Episode 72: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.76秒
+Episode 73: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.16秒
+Episode 74: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.91秒
+Episode 75: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.30秒
+Episode 76: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.80秒
+Episode 77: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.22秒
+Episode 78: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.47秒
+Episode 79: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.92秒
+Episode 80: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 98.11秒
+Episode 81: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.00秒
+Episode 82: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 81.63秒
+Episode 83: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.47秒
+Episode 84: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.92秒
+Episode 85: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 78.51秒
+Episode 86: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.25秒
+Episode 87: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 90.41秒
+Episode 88: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 75.86秒
+Episode 89: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.56秒
+Episode 90: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 82.71秒
+Episode 91: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.56秒
+Episode 92: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 84.57秒
+Episode 93: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.11秒
+Episode 94: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 83.65秒
+Episode 95: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 72.31秒
+Episode 96: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 77.64秒
+Episode 97: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.72秒
+Episode 98: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 79.60秒
+Episode 99: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 84.09秒
+Episode 100: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 73.67秒
+Episode 100结束。当前成功次数: 96，失败次数: 4========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 
+Episode 2: Failure. Reason: Episode 开始时检测到 NaN
+Episode 3: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.023], device='cuda:0')
+Episode 4: Failure. Reason: 
+Episode 5: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 
+Episode 2: Failure. Reason: 
+Episode 3: Failure. Reason: 
+Episode 4: Failure. Reason: 
+Episode 5: Failure. Reason: 
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 
+========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 47.78秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.18秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 51.54秒
+Episode 4: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 41.44秒
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 38.65秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 56.32秒
+Episode 7: Failure. Reason: 
+Episode 8: Failure. Reason: 
+Episode 9: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.023], device='cuda:0')
+Episode 10: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.99秒
+Episode 11: Failure. Reason: 
+Episode 12: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.012], device='cuda:0')
+Episode 13: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 143.28秒
+Episode 14: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 39.58秒
+Episode 15: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.063], device='cuda:0')
+Episode 16: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.066], device='cuda:0')
+Episode 17: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.076], device='cuda:0')
+Episode 18: Failure. Reason: 
+Episode 19: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 39.77秒
+Episode 20: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.068], device='cuda:0')
+Episode 21: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 58.06秒
+Episode 22: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 36.43秒
+Episode 23: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 30.78秒
+Episode 24: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.015], device='cuda:0')
+Episode 25: Failure. Reason: 
+Episode 26: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.035], device='cuda:0')
+Episode 27: Failure. Reason: 
+Episode 28: Failure. Reason: 
+Episode 29: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.012], device='cuda:0')
+Episode 30: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.08秒
+Episode 31: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 56.54秒
+Episode 32: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 61.18秒
+Episode 33: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.017], device='cuda:0'), tensor([0.], device='cuda:0')
+Episode 34: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.05秒
+Episode 35: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.085], device='cuda:0')
+Episode 36: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.011], device='cuda:0')
+Episode 37: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 35.17秒
+Episode 38: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 53.33秒
+Episode 39: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 40.37秒
+Episode 40: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.010], device='cuda:0')
+Episode 41: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 35.88秒
+Episode 42: Failure. Reason: 
+Episode 43: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.012], device='cuda:0')
+Episode 44: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 45.86秒
+Episode 45: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.25秒
+Episode 46: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.213], device='cuda:0')
+Episode 47: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 51.12秒
+Episode 48: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.49秒
+Episode 49: Failure. Reason: 
+Episode 50: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.077], device='cuda:0')
+Episode 51: Failure. Reason: 
+Episode 52: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 60.60秒
+Episode 53: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.20秒
+Episode 54: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 41.80秒
+Episode 55: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 37.21秒
+Episode 56: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.95秒
+Episode 57: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.022], device='cuda:0')
+Episode 58: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.40秒
+Episode 59: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.10秒
+Episode 60: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 45.09秒
+Episode 61: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 30.91秒
+Episode 62: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.050], device='cuda:0'), tensor([0.], device='cuda:0')
+Episode 63: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.17秒
+Episode 64: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 59.34秒
+Episode 65: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.028], device='cuda:0')
+Episode 66: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.99秒
+Episode 67: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.095], device='cuda:0')
+Episode 68: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 35.24秒
+Episode 69: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 55.01秒
+Episode 70: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.23秒
+Episode 71: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.53秒
+Episode 72: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 95.33秒
+Episode 73: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 40.33秒
+Episode 74: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 39.98秒
+Episode 75: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 36.85秒
+Episode 76: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 40.47秒
+Episode 77: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 135.40秒
+Episode 78: Failure. Reason: 
+Episode 79: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 46.08秒
+Episode 80: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 48.82秒
+Episode 81: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.25秒
+Episode 82: Failure. Reason: 
+Episode 83: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 41.32秒
+Episode 84: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 58.62秒
+Episode 85: Failure. Reason: 
+Episode 86: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.020], device='cuda:0'), tensor([0.], device='cuda:0')
+Episode 87: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.047], device='cuda:0')
+Episode 88: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.108], device='cuda:0')
+Episode 89: Failure. Reason: 
+Episode 90: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.235], device='cuda:0')
+Episode 91: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.109], device='cuda:0'), tensor([0.], device='cuda:0')
+Episode 92: Failure. Reason: 
+Episode 93: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 38.50秒
+Episode 94: Failure. Reason: 
+Episode 95: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 35.07秒
+Episode 96: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 37.78秒
+Episode 97: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.96秒
+Episode 98: Failure. Reason: 
+Episode 99: Failure. Reason: 
+Episode 100: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.83秒
+Episode 100结束。当前成功次数: 57，失败次数: 43========== Simulation Log N=1 ==========
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.54秒
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 30.95秒
+Episode 3: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.177], device='cuda:0')
+Episode 4: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.039], device='cuda:0')
+========== Simulation Log N=1 ==========
+Episode 1: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.023], device='cuda:0')
+Episode 2: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.13秒
+Episode 3: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 94.32秒
+Episode 4: Failure. Reason: 
+Episode 5: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 36.05秒
+Episode 6: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 152.14秒
+Episode 7: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.98秒
+Episode 8: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.79秒
+Episode 9: Failure. Reason: 
+Episode 10: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 31.68秒
+Episode 11: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 91.74秒
+Episode 12: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 36.11秒
+Episode 13: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.013], device='cuda:0')
+Episode 14: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.042], device='cuda:0')
+Episode 15: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 176.89秒
+Episode 16: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.045], device='cuda:0')
+Episode 17: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.75秒
+Episode 18: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 133.34秒
+Episode 19: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 36.88秒
+Episode 20: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 51.76秒
+Episode 21: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 53.32秒
+Episode 22: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 147.76秒
+Episode 23: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.017], device='cuda:0')
+Episode 24: Failure. Reason: 
+Episode 25: Failure. Reason: 
+Episode 26: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 32.38秒
+Episode 27: Failure. Reason: 
+Episode 28: Failure. Reason: 
+Episode 29: Failure. Reason: 
+Episode 30: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 45.28秒
+Episode 31: Failure. Reason: 检测到动态障碍旋转，旋转误差: tensor([0.], device='cuda:0'), tensor([0.171], device='cuda:0')
+Episode 32: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 37.34秒
+Episode 33: Failure. Reason: 
+Episode 34: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 33.19秒
+Episode 35: Failure. Reason: 
+Episode 36: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 34.95秒
+========== Simulation Log N=1 ==========
+Episode 1: Success. Reason: 任务成功：动作全为0且 planner.task_success 为 True 任务完成时间: 80.82秒

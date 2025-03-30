@@ -35,7 +35,7 @@ def run_sim(cfg: ExampleConfig):
     for _ in range(150):
         sim.step()
     print("Start simulation!")
-    total_episodes = 150
+    total_episodes = 100
     success_count = 0
     failure_count = 0
     log_file = "episode_log.txt"
@@ -97,7 +97,7 @@ def run_sim(cfg: ExampleConfig):
             cubeB_id = sim._get_actor_index_by_name("cubeB")
             cubeB_pos = sim._root_state[:, cubeB_id, :3]
             # print(cubeA_pos, cubeB_pos)
-            dist = torch.norm(cubeA_pos - cubeB_pos, dim=-1)
+            dist = torch.linalg.norm(cubeA_pos - cubeB_pos)
             print(dist)
 
             action = bytes_to_torch(
@@ -123,7 +123,7 @@ def run_sim(cfg: ExampleConfig):
             # episode_success = False
             # break
             # 假设 "dyn-obs" 对应的 actor 在 sim.env_cfg 中保存了 handle
-
+            '''
             dyn_obs_force = sim.get_actor_contact_forces_by_name("dyn-obs",
                                                                  "panda") + sim.get_actor_contact_forces_by_name( "dyn-obs_", "panda")
             force_norm = torch.linalg.norm(dyn_obs_force, dim=1)
@@ -136,7 +136,29 @@ def run_sim(cfg: ExampleConfig):
                 print("检测到动态障碍碰撞，接触力:", force_norm, "宣布本回合失败！")
                 episode_success = False
                 break
+            '''
+            dyn_obs_quat = sim.get_actor_orientation_by_name("dyn-obs")
+            dyn_obs_quat_ = sim.get_actor_orientation_by_name("dyn-obs_")
 
+            # 预期的初始朝向，单位四元数 (x, y, z, w) = (0, 0, 0, 1)
+            expected_quat = torch.tensor([0, 0, 0, 1], dtype=torch.float32, device=sim.device).unsqueeze(0)
+            # 将 expected_quat 扩展到和 dyn_obs_quat 形状一致
+            expected_quat = expected_quat.expand_as(dyn_obs_quat)
+
+            # 计算当前朝向与预期朝向的差异（欧氏距离，作为一个简单的衡量指标）
+            rot_error1 = torch.linalg.norm(dyn_obs_quat - expected_quat, dim=1)
+            rot_error2 = torch.linalg.norm(dyn_obs_quat_ - expected_quat, dim=1)
+            print("动态障碍物旋转误差：", rot_error1, rot_error2)
+
+            # 根据实际情况设定一个旋转误差阈值
+            rot_threshold = 0.01  # 这个阈值可以根据具体需求调整
+
+            # 判断是否发生了意外旋转
+            if torch.any(rot_error1 > rot_threshold) or torch.any(rot_error2 > rot_threshold):
+                failure_reason = f"检测到动态障碍旋转，旋转误差: {rot_error1}, {rot_error2}"
+                print("检测到动态障碍旋转！", failure_reason)
+                episode_success = False
+                break
             if torch.all(action == 0) and planner.task_success:
                 print("本回合任务成功！")
                 success_reason = "任务成功：动作全为0且 planner.task_success 为 True"

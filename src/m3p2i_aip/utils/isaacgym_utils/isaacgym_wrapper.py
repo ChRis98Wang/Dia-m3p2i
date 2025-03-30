@@ -330,8 +330,8 @@ class IsaacGymWrapper:
 
         # 分别生成三个位置的y坐标（均在[-0.42, 0.42]内）
         # y_dynamic = torch.empty(1).uniform_(-0.4, 0.4).item()
-        y_target = torch.empty(1).uniform_(0.3,0.32).item()
-        y_obj = torch.empty(1).uniform_(-0.42,-0.4).item()
+        y_target = torch.empty(1).uniform_(0.35,0.37).item()
+        y_obj = torch.empty(1).uniform_(-0.22,-0.2).item()
         # y_static = torch.empty(1).uniform_(-0.4, 0.4).item()
         # y_dynamic_ = y_static- 0.25
         # 固定的z坐标
@@ -444,7 +444,7 @@ class IsaacGymWrapper:
     def apply_rigid_body_force_tensors(self, u):
         self._gym.apply_rigid_body_force_tensors(self._sim, gymtorch.unwrap_tensor(u.view(-1, 3)))
     
-    def update_dyn_obs(self, i, period=160):
+    def update_dyn_obs(self, i, period=240):
         dyn_obs_id0 = self._get_actor_index_by_name("dyn-obs")
 
         dyn_obs0_pos = self._root_state[:, dyn_obs_id0, :3]
@@ -458,7 +458,7 @@ class IsaacGymWrapper:
             offsets1 = torch.tensor([0.01, 0.01, 0], dtype=torch.float32, device=self.device)
         else:
             offsets0 = torch.tensor([0.003, 0.00, 0.00], dtype=torch.float32, device=self.device)
-            offsets1 = torch.tensor([0.002, 0.000, 0.00], dtype=torch.float32, device=self.device)
+            offsets1 = torch.tensor([0.003, 0.000, 0.00], dtype=torch.float32, device=self.device)
         #current_period = period + int(10 * torch.sin(i_tensor * 0.01))
 
 
