@@ -2,7 +2,7 @@ defaults:
   - base_mppi
 
 mppi_mode: "halton-spline"  # halton-spline, simple
-sampling_method: "random"   # halton, random
+sampling_method: "halton"   # halton, random
 num_samples: 200
 horizon: 12                # At least 12 for Halton Sampling
 nx: 18

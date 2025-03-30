@@ -207,7 +207,7 @@ class MPPI():
 
         self.horizon_diffuse_factor = 0.9
         self.traj_diffuse_factor = 0.5
-        self.Ndiffuse = 2
+        self.Ndiffuse = 3
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         # 按照参考代码定义A, B 来生成sigmas
         sigma0 = 1e-2
@@ -260,6 +260,7 @@ class MPPI():
     def reset(self):
         print("this is reseting:",self.u_max)
 
+    '''
     def command(self, state):
         """
             Given a state, returns the best action sequence
@@ -381,7 +382,7 @@ class MPPI():
             else:
                 action = torch.from_numpy(u_filtered).to('cuda')
         return action
-    '''
+
     def _reverse_once(self, i,action):
         # i 为当前扩散迭代索引，0 <= i < Ndiffuse
         # 生成标准正态采样 eps
@@ -414,7 +415,7 @@ class MPPI():
         #if self.multi_modal:
             #act_seq[0, :, :] = self.best_traj_1
             #act_seq[self.half_K, :, :] = self.best_traj_2
-        if self.env_type == "panda_env"or self.env_type == "panda_env_LiftedObstaclesShelf"or self.env_type=="panda_env_2dyn":
+        if self.env_type == "panda_env"or self.env_type == "panda_env_LiftedObstaclesShelf"or self.env_type=="panda_env_2dyn"or self.env_type=="panda_env_2dyx2":
             if self.gripper_command == "open":
                 self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
             elif self.gripper_command == "close":
@@ -465,7 +466,7 @@ class MPPI():
             act_seq[0, :, :] = self.best_traj_1
             act_seq[self.half_K, :, :] = self.best_traj_2
         self.perturbed_action = torch.clone(act_seq)
-        if self.env_type == "panda_env"or self.env_type=="panda_env_2dyn":
+        if self.env_type == "panda_env"or self.env_type=="panda_env_2dyn"or self.env_type=="panda_env_2dyx2":
             if self.gripper_command == "open":
                 self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
             elif self.gripper_command == "close":
