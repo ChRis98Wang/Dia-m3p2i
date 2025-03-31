@@ -2,7 +2,7 @@ defaults:
   - mppi: panda
   - isaacgym: panda
 
-env_type: panda_env_2dyx2
+env_type: panda_env_lift_maze
 task: reactive_pick
 
 multi_modal: False

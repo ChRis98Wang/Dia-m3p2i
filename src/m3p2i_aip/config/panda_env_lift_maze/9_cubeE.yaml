@@ -1,0 +1,7 @@
+type: "box"
+name: "cubeE"
+size: [.02, .2, .35]
+init_pos: [-0.23, -0.45, 1.05]
+color: [.0, .3, .1]
+fixed: True
+gravity: False

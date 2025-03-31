@@ -1,0 +1,7 @@
+type: "box"
+name: "cubeF"
+size: [0.04,0.46,0.02]
+# init_pos: [0, 0.0, 5]
+init_pos: [0., 0., 1.06]
+color: [.5, .2, .0]
+fixed: True

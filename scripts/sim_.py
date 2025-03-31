@@ -79,12 +79,12 @@ def run_sim(cfg: ExampleConfig):
         step_counter = 0
         last_timestamp = time.time()
         stream = torch.cuda.Stream()
-        while time.time() - ep_start_time < 180:
+        while time.time() - ep_start_time < 400:
             current_time = time.time()
             dt = current_time - last_timestamp
             if dt > 0:
                 current_freq = 1.0 / dt
-                print(f"当前控制频率：{current_freq:.2f} Hz")
+                print(f"当前控制频率：{current_freq:.2f} HZ,时间是{time.time() - ep_start_time}")
 
             # 更新 last_timestamp 为当前时间
             last_timestamp = current_time
@@ -104,6 +104,8 @@ def run_sim(cfg: ExampleConfig):
                 planner.run_tamp(
                     torch_to_bytes(sim._dof_state), torch_to_bytes(sim._root_state), 33)
             )
+
+
 
             sim.set_dof_velocity_target_tensor(action)
 
@@ -138,7 +140,12 @@ def run_sim(cfg: ExampleConfig):
                 break
             '''
             dyn_obs_quat = sim.get_actor_orientation_by_name("dyn-obs")
-            dyn_obs_quat_ = sim.get_actor_orientation_by_name("dyn-obs_")
+            #dyn_obs_quat_ = sim.get_actor_orientation_by_name("dyn-obs_")
+            sta_obsC_quat= sim.get_actor_orientation_by_name("cubeC")
+            sta_obsD_quat=sim.get_actor_orientation_by_name("cubeD")
+            sta_shelf_quat=sim.get_actor_orientation_by_name("shelf_stand")
+            sta_obsE_quat=sim.get_actor_orientation_by_name("cubeE")
+
 
             # 预期的初始朝向，单位四元数 (x, y, z, w) = (0, 0, 0, 1)
             expected_quat = torch.tensor([0, 0, 0, 1], dtype=torch.float32, device=sim.device).unsqueeze(0)
@@ -147,15 +154,18 @@ def run_sim(cfg: ExampleConfig):
 
             # 计算当前朝向与预期朝向的差异（欧氏距离，作为一个简单的衡量指标）
             rot_error1 = torch.linalg.norm(dyn_obs_quat - expected_quat, dim=1)
-            rot_error2 = torch.linalg.norm(dyn_obs_quat_ - expected_quat, dim=1)
-            print("动态障碍物旋转误差：", rot_error1, rot_error2)
+            rot_error2 = torch.linalg.norm(sta_obsC_quat - expected_quat, dim=1)
+            rot_error3 = torch.linalg.norm(sta_obsD_quat - expected_quat, dim=1)
+            rot_error4 = torch.linalg.norm(sta_shelf_quat - expected_quat, dim=1)
+            rot_error5 = torch.linalg.norm(sta_obsE_quat - expected_quat, dim=1)
+            print("动态障碍物旋转误差：", rot_error1,rot_error2,rot_error3,rot_error4,rot_error5)
 
             # 根据实际情况设定一个旋转误差阈值
-            rot_threshold = 0.01  # 这个阈值可以根据具体需求调整
+            rot_threshold = 0.03  # 这个阈值可以根据具体需求调整
 
             # 判断是否发生了意外旋转
-            if torch.any(rot_error1 > rot_threshold) or torch.any(rot_error2 > rot_threshold):
-                failure_reason = f"检测到动态障碍旋转，旋转误差: {rot_error1}, {rot_error2}"
+            if torch.any(rot_error1 > rot_threshold) or torch.any(rot_error2 > rot_threshold)or torch.any(rot_error3 > rot_threshold) or torch.any(rot_error4 > rot_threshold)or torch.any(rot_error5 > rot_threshold):
+                failure_reason = f"检测到动态障碍旋转，旋转误差"
                 print("检测到动态障碍旋转！", failure_reason)
                 episode_success = False
                 break
