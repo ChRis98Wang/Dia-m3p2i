@@ -7,10 +7,10 @@ import gc
 
 @dataclass
 class IsaacGymConfig():
-    dt: float = 0.05 # 0.01
+    dt: float = 0.1 # 0.01
     substeps: int = 2
     use_gpu_pipeline: bool = True
-    num_threads: int = 12
+    num_threads: int = 0
     viewer: bool = False
     spacing: float = 10 # !! 2.0
     camera_pos: List[float] = field(default_factory=lambda: [1.5, 6, 8])
@@ -26,9 +26,9 @@ def parse_isaacgym_config(cfg: IsaacGymConfig, device: str = "cuda:0") -> gymapi
     sim_params.gravity = gymapi.Vec3(0.0, 0.0, -9.8)
 
     sim_params.physx.solver_type = 2
-    sim_params.physx.num_position_iterations = 8
-    sim_params.physx.num_velocity_iterations = 2
-    sim_params.physx.contact_offset = 0.02
+    sim_params.physx.num_position_iterations = 16
+    sim_params.physx.num_velocity_iterations = 4
+    sim_params.physx.contact_offset = 0.01
     sim_params.physx.rest_offset = 0.001
     sim_params.physx.num_threads = cfg.num_threads
     sim_params.physx.use_gpu = cfg.use_gpu_pipeline
@@ -323,15 +323,15 @@ class IsaacGymWrapper:
         每个位置均以列表形式表示：[x, y, z]
         """
         # 为确保目标物块加减0.05后仍在[-0.38, 0.38]内，目标物块的y取值范围设置为[-0.33, 0.33]
-        x_target = torch.empty(1).uniform_(0.1, 0.12).item()
-        x_obj = torch.empty(1).uniform_(0.1, 0.12).item()
+        x_target = torch.empty(1).uniform_(-0.07, -0.05).item()
+        x_obj = torch.empty(1).uniform_(0.07, 0.09).item()
         # x_dynamic = x_target-0.06   # 动态障碍x坐标
         # x_static = x_target + 0.1 # 静态障碍的x坐标
 
         # 分别生成三个位置的y坐标（均在[-0.42, 0.42]内）
         # y_dynamic = torch.empty(1).uniform_(-0.4, 0.4).item()
-        y_target = torch.empty(1).uniform_(0.35,0.37).item()
-        y_obj = torch.empty(1).uniform_(-0.22,-0.2).item()
+        y_obj = torch.empty(1).uniform_(0.35,0.37).item()
+        y_target = torch.empty(1).uniform_(-0.47,-0.45).item()
         # y_static = torch.empty(1).uniform_(-0.4, 0.4).item()
         # y_dynamic_ = y_static- 0.25
         # 固定的z坐标
@@ -444,33 +444,33 @@ class IsaacGymWrapper:
     def apply_rigid_body_force_tensors(self, u):
         self._gym.apply_rigid_body_force_tensors(self._sim, gymtorch.unwrap_tensor(u.view(-1, 3)))
     
-    def update_dyn_obs(self, i, period=240):
+    def update_dyn_obs(self, i, period=360):
         dyn_obs_id0 = self._get_actor_index_by_name("dyn-obs")
 
         dyn_obs0_pos = self._root_state[:, dyn_obs_id0, :3]
-        dyn_obs_id1 = self._get_actor_index_by_name("dyn-obs_")
-        dyn_obs1_pos = self._root_state[:, dyn_obs_id1, :3]
+        #dyn_obs_id1 = self._get_actor_index_by_name("dyn-obs_")
+        #dyn_obs1_pos = self._root_state[:, dyn_obs_id1, :3]
         #radius = 0.05
         #angle = torch.tensor(i * 0.1, dtype=torch.float32, device=self.device)
         #i_tensor = torch.tensor(i, dtype=torch.float32, device=self.device)
         if self.env_type == "point_env":
             offsets0 = torch.tensor([0.01, 0.01, 0], dtype=torch.float32, device=self.device)
-            offsets1 = torch.tensor([0.01, 0.01, 0], dtype=torch.float32, device=self.device)
+            #offsets1 = torch.tensor([0.01, 0.01, 0], dtype=torch.float32, device=self.device)
         else:
-            offsets0 = torch.tensor([0.003, 0.00, 0.00], dtype=torch.float32, device=self.device)
-            offsets1 = torch.tensor([0.003, 0.000, 0.00], dtype=torch.float32, device=self.device)
+            offsets0 = torch.tensor([0.00, 0.002, 0.00], dtype=torch.float32, device=self.device)
+            #offsets1 = torch.tensor([0.003, 0.000, 0.00], dtype=torch.float32, device=self.device)
         #current_period = period + int(10 * torch.sin(i_tensor * 0.01))
 
 
         if i % period > period/4 and i % period < period/4*3:
             dyn_obs0_pos += offsets0
-            dyn_obs1_pos += offsets1
+            #dyn_obs1_pos += offsets1
         else:
             dyn_obs0_pos -= offsets0
-            dyn_obs1_pos -= offsets1
+            #dyn_obs1_pos -= offsets1
         fixed_quat = torch.tensor([0, 0, 0, 1], dtype=torch.float32, device=self.device)
         self._root_state[:, dyn_obs_id0, 3:7] = fixed_quat  # 对第一个动态障碍重置旋转
-        self._root_state[:, dyn_obs_id1, 3:7] = fixed_quat  # 对第二个动态障碍重置旋转
+       #self._root_state[:, dyn_obs_id1, 3:7] = fixed_quat  # 对第二个动态障碍重置旋转
         self._gym.set_actor_root_state_tensor(
             self._sim, gymtorch.unwrap_tensor(self._root_state)
         )
@@ -650,7 +650,7 @@ class IsaacGymWrapper:
         else:
             # 加入随机元素
             pose.p = gymapi.Vec3(*actor.init_pos)
-        pose.r = gymapi.Quat(*actor.init_ori)
+        pose.r = gymapi.Quat(0, 0, 0, 1)
         handle = self._gym.create_actor(
             env=env,
             asset=asset,

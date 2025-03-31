@@ -1,0 +1,7 @@
+type: "box"
+name: "cubeC"
+size: [.2, .02, .35]
+init_pos: [0.12, 0.22, 1.06]
+color: [.0, .3, .1]
+gravity: False
+fixed: True

@@ -47,7 +47,7 @@ class MPPIConfig(object):
     U_init: Optional[List[List[float]]] = None
     u_scale: float = 1
     u_per_command: int = 1
-    rollout_var_discount: float = 0.95
+    rollout_var_discount: float = 1#0.95
     sample_null_action: bool = False
     sample_previous_plan: bool = True
     sample_other_priors: bool = False
@@ -179,7 +179,7 @@ class MPPI():
         self.step_size_mean = 0.98      # From storm
 
         # Discount
-        self.gamma = cfg.rollout_var_discount 
+        self.gamma = cfg.rollout_var_discount
         self.gamma_seq = torch.cumprod(torch.tensor([1.0] + [self.gamma] * (self.T - 1)),dim=0).reshape(1, self.T)
         self.gamma_seq = self.gamma_seq.to(**self.tensor_args)
         self.beta = 1 # param storm
@@ -205,9 +205,9 @@ class MPPI():
         # diffuse parameter
         self.temp_sample = 1
 
-        self.horizon_diffuse_factor = 0.9
-        self.traj_diffuse_factor = 0.5
-        self.Ndiffuse = 2
+        self.horizon_diffuse_factor = 0.95
+        self.traj_diffuse_factor =  0.3
+        self.Ndiffuse = 3
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         # 按照参考代码定义A, B 来生成sigmas
         sigma0 = 1e-2
@@ -223,6 +223,7 @@ class MPPI():
         t_range = torch.arange(self.Hnode + 1, device=self.device, dtype=torch.float32)
         self.sigma_control = self.horizon_diffuse_factor ** (self.Hnode - t_range)
         #self.reset_internal_state()
+
 
     def reset_internal_state(self):
         """
@@ -260,74 +261,75 @@ class MPPI():
     def reset(self):
         print("this is reseting:",self.u_max)
 
+
     def command(self, state):
-        """
-            Given a state, returns the best action sequence
-        """
+
+        with torch.no_grad():
         
-        if not torch.is_tensor(state):
-            state = torch.tensor(state)
-        self.state = state.to(**self.tensor_args)
-        if torch.isnan(self.mean_action).any():
-            print("检测到 mean_action 中存在 NaN，正在重置 MPPI 内部状态")
-            self.reset_internal_state()
+            if not torch.is_tensor(state):
+                state = torch.tensor(state)
+            self.state = state.to(**self.tensor_args)
+            if torch.isnan(self.mean_action).any():
+                print("检测到 mean_action 中存在 NaN，正在重置 MPPI 内部状态")
+                self.reset_internal_state()
 
-        if self.mppi_mode == 'simple':
-            self.U = torch.roll(self.U, -1, dims=0)
+            if self.mppi_mode == 'simple':
+                self.U = torch.roll(self.U, -1, dims=0)
 
-            cost_total = self._compute_total_cost_batch_simple() # [K]
+                cost_total = self._compute_total_cost_batch_simple() # [K]
 
-            beta = torch.min(cost_total)
-            self.cost_total_non_zero = _ensure_non_zero(cost_total, beta, 1 / self.lambda_)
+                beta = torch.min(cost_total)
+                self.cost_total_non_zero = _ensure_non_zero(cost_total, beta, 1 / self.lambda_)
 
-            eta = torch.sum(self.cost_total_non_zero)
-            self.weights = (1. / eta) * self.cost_total_non_zero # [K]
-            
-            self.U += torch.sum(self.weights.view(-1, 1, 1) * self.noise, dim=0) # [K, 1, 1] * [K, T, nu] --> [T, nu] sum over K
+                eta = torch.sum(self.cost_total_non_zero)
+                self.weights = (1. / eta) * self.cost_total_non_zero # [K]
 
-            action = self.U[:self.u_per_command]
+                self.U += torch.sum(self.weights.view(-1, 1, 1) * self.noise, dim=0) # [K, 1, 1] * [K, T, nu] --> [T, nu] sum over K
 
-        elif self.mppi_mode == 'halton-spline':
-            # Shift command 1 time step [T, nu]
-            self.mean_action = self._shift_action(self.mean_action)
-            if self.multi_modal:
-                self.mean_action_1 = self._shift_action(self.mean_action_1)
-                self.mean_action_2 = self._shift_action(self.mean_action_2)
-                self.best_traj_1 = self._shift_action(self.best_traj_1)
-                self.best_traj_2 = self._shift_action(self.best_traj_2)
+                action = self.U[:self.u_per_command]
 
-            #cost_total=self._compute_total_cost_batch_halton()
-            self._reverse(self.mean_action)
-            #mean_action = torch.clamp(mean_action, min=-2.0, max=2.0)
-            action = torch.clone(self.mean_action) # !!
-        
-        # Compute top n trajs
-        self.top_values, self.top_idx = torch.topk(self.weights, 20)
+            elif self.mppi_mode == 'halton-spline':
+                # Shift command 1 time step [T, nu]
+                self.mean_action = self._shift_action(self.mean_action)
+                if self.multi_modal:
+                    self.mean_action_1 = self._shift_action(self.mean_action_1)
+                    self.mean_action_2 = self._shift_action(self.mean_action_2)
+                    self.best_traj_1 = self._shift_action(self.best_traj_1)
+                    self.best_traj_2 = self._shift_action(self.best_traj_2)
 
-        if self.ee_states != 'None':
-            self.top_trajs = torch.index_select(self.ee_states, 0, self.top_idx)
-        else:
-            self.top_trajs = torch.index_select(self.states, 0, self.top_idx)
-            pos_idx = torch.tensor([0, 2], device=self.device, dtype=torch.int32)
-            self.top_trajs = torch.index_select(self.top_trajs, 2, pos_idx)
+                #cost_total=self._compute_total_cost_batch_halton()
+                #control_timestamp = time.time()
+                self._reverse(self.mean_action)
+                #current_time = time.time()
+                #print(f"mppi running frequence:{1 / (current_time - control_timestamp)} on{self.Ndiffuse} ")
+                #mean_action = torch.clamp(mean_action, min=-2.0, max=2.0)
+                action = torch.clone(self.mean_action) # !!
 
-        # Smoothing with Savitzky-Golay filter
-        if self.filter_u:
-            u_ = action.cpu().numpy()
-            u_filtered = signal.savgol_filter(u_, self.sgf_window, self.sgf_order, deriv=0, delta=1.0, axis=0, mode='interp', cval=0.0)
-            if self.device == "cpu":
-                action = torch.from_numpy(u_filtered).to('cpu')
+            # Compute top n trajs
+            self.top_values, self.top_idx = torch.topk(self.weights, 20)
+
+            if self.ee_states != 'None':
+                self.top_trajs = torch.index_select(self.ee_states, 0, self.top_idx)
             else:
-                action = torch.from_numpy(u_filtered).to('cuda')
-        #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        #print(action.shape)
-        return action
-    '''
+                self.top_trajs = torch.index_select(self.states, 0, self.top_idx)
+                pos_idx = torch.tensor([0, 2], device=self.device, dtype=torch.int32)
+                self.top_trajs = torch.index_select(self.top_trajs, 2, pos_idx)
 
+            # Smoothing with Savitzky-Golay filter
+            if self.filter_u:
+                u_ = action.cpu().numpy()
+                u_filtered = signal.savgol_filter(u_, self.sgf_window, self.sgf_order, deriv=0, delta=1.0, axis=0, mode='interp', cval=0.0)
+                if self.device == "cpu":
+                    action = torch.from_numpy(u_filtered).to('cpu')
+                else:
+                    action = torch.from_numpy(u_filtered).to('cuda')
+            #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            #print(action.shape)
+            return action
+
+    """
     def command(self, state):
-        """
-            Given a state, returns the best action sequence
-        """
+        
 
         if not torch.is_tensor(state):
             state = torch.tensor(state)
@@ -381,7 +383,8 @@ class MPPI():
             else:
                 action = torch.from_numpy(u_filtered).to('cuda')
         return action
-    '''
+    """
+
     def _reverse_once(self, i,action):
         # i 为当前扩散迭代索引，0 <= i < Ndiffuse
         # 生成标准正态采样 eps
@@ -400,9 +403,11 @@ class MPPI():
 
         # 计算迭代缩放因子
         iteration_noise_scale = (self.traj_diffuse_factor ** i)
+        #print(self.sigma_control)
         # 对每个时间步应用缩放
         for t in range(self.T):
             combined_scale =  iteration_noise_scale * self.sigma_control[t]
+            #print(combined_scale)
             self.delta[:, t, :] *= combined_scale
 
         #scaled_delta = self.delta @ torch.diag(torch.sqrt(torch.diag(self.noise_sigma)))
@@ -414,7 +419,7 @@ class MPPI():
         #if self.multi_modal:
             #act_seq[0, :, :] = self.best_traj_1
             #act_seq[self.half_K, :, :] = self.best_traj_2
-        if self.env_type == "panda_env"or self.env_type == "panda_env_LiftedObstaclesShelf"or self.env_type=="panda_env_2dyn"or self.env_type=="panda_env_2dyx2":
+        if self.env_type == "panda_env"or self.env_type == "panda_env_LiftedObstaclesShelf"or self.env_type=="panda_env_2dyn"or self.env_type=="panda_env_2dyx2"or self.env_type=="panda_env_lift_maze":
             if self.gripper_command == "open":
                 self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
             elif self.gripper_command == "close":
@@ -425,6 +430,7 @@ class MPPI():
         #action_cost = self.get_action_cost()
         #perturbation_cost = torch.sum(self.mean_action * action_cost, dim=(1, 2))
         return self.mean_action
+
 
 
     def _reverse(self,mean_action):
@@ -465,7 +471,7 @@ class MPPI():
             act_seq[0, :, :] = self.best_traj_1
             act_seq[self.half_K, :, :] = self.best_traj_2
         self.perturbed_action = torch.clone(act_seq)
-        if self.env_type == "panda_env"or self.env_type=="panda_env_2dyn"or self.env_type=="panda_env_2dyx2":
+        if self.env_type == "panda_env"or self.env_type=="panda_env_2dyn"or self.env_type=="panda_env_2dyx2"or self.env_type == "panda_env_lift_maze":
             if self.gripper_command == "open":
                 self.perturbed_action[:, :, 8] = self.perturbed_action[:, :, 7] = 1.5
             elif self.gripper_command == "close":
@@ -487,7 +493,79 @@ class MPPI():
         action_seq = torch.roll(action_seq, -1, dims=0)
         action_seq[-1] = saved_action
         return action_seq
+    '''
+    def _compute_rollout_costs(self, perturbed_actions):
+        """
+            Given a sequence of perturbed actions, forward simulates their effects and calculates costs for each rollout
+        """
+        K, T, nu = perturbed_actions.shape
+        assert nu == self.nu
 
+        # Prepare cost tensors
+        cost_total = torch.zeros(K, **self.tensor_args)
+        cost_horizon = torch.zeros([K, T], **self.tensor_args)
+        cost_samples = cost_total.clone()
+
+        # Initialize states batch
+        if self.state.shape == (K, self.nx):
+            state = self.state
+        else:
+            state = self.state.view(1, -1).repeat(K, 1)
+
+        states = []
+        actions = []
+        ee_states = []
+
+        # Create CUDA stream for rollout
+        stream = torch.cuda.Stream(device=self.device)
+        with torch.cuda.stream(stream):
+            for t in range(T):
+                # apply action scaling
+                u = self.u_scale * perturbed_actions[:, t]
+                if self.sample_null_action:
+                    u[self.K - 1] = 0
+                    perturbed_actions[self.K - 1, t] = u[self.K - 1]
+
+                # dynamics and cost on CUDA stream
+                state, u = self._dynamics(state, u, t)
+                c = self._running_cost(state)
+
+                # record costs
+                cost_samples += c
+                cost_horizon[:, t] = c
+
+                # save trajectories
+                states.append(state)
+                actions.append(u)
+                # ee_states optional
+                # if available, append ee state else skip
+                # here we skip, original logic preserved
+
+            # end for t
+        # synchronize streams
+        torch.cuda.current_stream(device=self.device).wait_stream(stream)
+
+        # stack saved trajectories
+        actions = torch.stack(actions, dim=-2)
+        states = torch.stack(states, dim=-2)
+        ee_states = 'None'
+
+        # terminal cost
+        if self.terminal_state_cost:
+            c_term = self.terminal_state_cost(states, actions)
+            cost_samples += c_term
+
+        cost_total += cost_samples.mean(dim=0)
+
+        # update noise distribution if halton-spline
+        if self.mppi_mode == 'halton-spline':
+            if self.multi_modal:
+                self.noise = self._update_multi_modal_distribution(cost_horizon, actions)
+            else:
+                self.noise = self._update_distribution(cost_horizon, actions)
+
+        return cost_total, states, actions, ee_states
+    '''
     def _compute_rollout_costs(self, perturbed_actions):
         """
             Given a sequence of perturbed actions, forward simulates their effects and calculates costs for each rollout
@@ -615,8 +693,8 @@ class MPPI():
         if self.env_type == 'panda_env': # grady's thesis
             eta_u_bound = 20
             eta_l_bound = 10
-            beta_lm = 0.9
-            beta_um = 1.2
+            beta_lm = 1
+            beta_um = 1
             if eta > eta_u_bound:
                 self.beta = self.beta*beta_lm
             elif eta < eta_l_bound:
@@ -668,8 +746,9 @@ class MPPI():
         new_mean = torch.sum(weighted_seq, dim=0)
 
         # Update for the mean
-        self.mean_action = (1.0 - self.step_size_mean) * self.mean_action +\
-            self.step_size_mean * new_mean 
+        self.mean_action =  self.mean_action +  new_mean
+        #self.mean_action = (1.0 - self.step_size_mean) * self.mean_action +\
+            #self.step_size_mean * new_mean
        
         delta = actions - self.mean_action.unsqueeze(0)
 

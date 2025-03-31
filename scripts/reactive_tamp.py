@@ -1,5 +1,6 @@
 from isaacgym import gymtorch
 import torch, hydra, zerorpc
+
 from m3p2i_aip.planners.motion_planner import m3p2i
 from m3p2i_aip.planners.task_planner import task_planner
 from m3p2i_aip.config.config_store import ExampleConfig
@@ -132,11 +133,12 @@ class REACTIVE_TAMP:
                 torch.zeros(self.sim.dofs_per_robot, device=self.cfg.mppi.device)
             )
         else:
+
             print("--------Compute optimal action--------")
             print()
-            #self.debug_planner_output(planner, self.sim)
+
             return torch_to_bytes(
-                self.motion_planner.command(self.sim._dof_state[0])[0]
+               self.motion_planner.command(self.sim._dof_state[0])[0]
             )
 
     def dynamics(self, _, u, t=None):

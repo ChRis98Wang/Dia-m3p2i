@@ -1,0 +1,7 @@
+type: "box"
+name: "cubeD"
+size: [.02, .2, .35]
+init_pos: [0.24, 0.32, 1.06]
+color: [.0, .3, .1]
+gravity: False
+fixed: True

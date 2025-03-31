@@ -25,6 +25,7 @@ class M3P2I(mppi.MPPI):
         """
             Update the inverse temperature on the fly
         """
+
         found = False
         # Makes sure beta is properly tuned before computing the weights
         while not found:
@@ -33,6 +34,7 @@ class M3P2I(mppi.MPPI):
             eta = torch.sum(exp_)       # tells how many significant samples we have, more or less
 
             # Update beta to make eta converge within the bounds
+
             beta_lm = 0.9
             beta_um = 1.2
             if eta > eta_u_bound:
@@ -41,6 +43,7 @@ class M3P2I(mppi.MPPI):
                 beta = beta * beta_um
             else:
                 found = True
+
         return eta, exp_
 
     def _multi_modal_exp_util(self, costs):
@@ -85,6 +88,7 @@ class M3P2I(mppi.MPPI):
         # Gradient update for the mean
         self.mean_action = (1.0 - self.step_size_mean) * self.mean_action +\
             self.step_size_mean * torch.sum(weighted_seq, 0)
+        #self.mean_action = self.mean_action+torch.sum(weighted_seq, 0)
         # print(torch.sum(weighted_seq, 0))
         # print(self.mean_action.size()) # [T, nu]
        
