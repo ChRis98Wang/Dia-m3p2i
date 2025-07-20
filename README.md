@@ -138,9 +138,17 @@ python3 reactive_tamp.py -cn config_panda multi_modal=True cube_on_shelf=True
 ````bash 
 python3 sim.py -cn config_panda multi_modal=True cube_on_shelf=True
 ````
+### Testing DIA-M3P2I 
+Pick the cube from the shelf:
+````bash 
+python3 reactive_tamp.py -cn config_panda multi_modal=True 
+````
+
+````bash 
+python3 sim.py -cn config_panda multi_modal=True 
 
 >[!NOTE]
-You can play with the cubes using ASDW keys and keyup, keydown, keyleft and keyright.
+with different senarios you can switch into different branch. run this code you will testing lift_maze senario. 
 
 ## Cite
 
