@@ -139,7 +139,7 @@ python3 reactive_tamp.py -cn config_panda multi_modal=True cube_on_shelf=True
 python3 sim.py -cn config_panda multi_modal=True cube_on_shelf=True
 ````
 ### Testing DIA-M3P2I 
-Pick the cube from the shelf:
+Testing DIA-M3P2I:
 ````bash 
 python3 reactive_tamp.py -cn config_panda multi_modal=True 
 ````
@@ -149,6 +149,8 @@ python3 sim.py -cn config_panda multi_modal=True
 
 >[!NOTE]
 with different senarios you can switch into different branch. run this code you will testing lift_maze senario. 
+
+
 
 ## Cite
 
