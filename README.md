@@ -136,7 +136,7 @@ python3 reactive_tamp.py -cn config_panda multi_modal=True cube_on_shelf=True
 ````
 
 ````bash 
-python3 sim.py -cn config_panda multi_modal=True cube_on_shelf=True
+python3 sim_.py -cn config_panda multi_modal=True cube_on_shelf=True
 ````
 ### Testing DIA-M3P2I 
 Testing DIA-M3P2I:
